@@ -18,21 +18,8 @@ const CharityCount = () => (
         .join('&')}`;
       return (
         <div className="count-charity">
-          <div className="charity--box">
-            {charityList.map(charity => (
-              <div className="charity--row">
-                <span className="charity--name">{charity.name}</span>
-                <span
-                  onClick={() => removeCharity(charity.charityId)}
-                  className="charity--remove"
-                >
-                  -
-                </span>
-              </div>
-            ))}
-          </div>
-          <Link to={count > 1 && str}>
-            <div className="tooltip">
+          <div className="tooltip">
+            <Link to={count > 1 && str}>
               <img
                 className="img-charity"
                 src="http://www7.0zz0.com/2018/12/05/10/361893112.png"
@@ -41,16 +28,27 @@ const CharityCount = () => (
               <div className="count">
                 <strong>{count}</strong>
               </div>
-              {/* {count > 1 ? (
-                  <span>compare</span>
+            </Link>
+            <span className="tooltiptext place">
+              <div className="charity--box">
+                {charityList.length > 0 ? (
+                  <React.Fragment>
+                    {charityList.map(charity => (
+                      <div className="charity--row">
+                        <span className="charity--name"> - {charity.name}</span>
+                        <span
+                          onClick={() => removeCharity(charity.charityId)}
+                          className="charity--remove fa fa-trash fa-lg"
+                        />
+                      </div>
+                    ))}
+                  </React.Fragment>
                 ) : (
-        
-                  <span>
-                    Add and compare at least <strong>two maximum three</strong>
-                  </span>
-                )} */}
-            </div>
-          </Link>
+                  <span>You didn't add any charities to compare yet</span>
+                )}
+              </div>
+            </span>
+          </div>
         </div>
       );
     }}
