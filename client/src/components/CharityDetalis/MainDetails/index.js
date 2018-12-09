@@ -3,7 +3,7 @@ import React from 'react';
 import './style.css';
 
 const MainDetails = props => {
-  const { objective, who, what, how } = props;
+  const { objective, who, what, how, website } = props;
   return (
     <div className="mainDetails">
       <table>
@@ -14,6 +14,16 @@ const MainDetails = props => {
             </td>
             <td className="header--items">
               <span>{objective}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span className="header">Website</span>
+            </td>
+            <td className="header--items">
+              <span>
+                <a href={`http://${website}`}>{website}</a>
+              </span>
             </td>
           </tr>
           <tr>
