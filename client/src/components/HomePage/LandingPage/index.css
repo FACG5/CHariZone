@@ -42,6 +42,23 @@ top:14px;
 .hamburger:after{
 top: -14px;
 }
+.hamburger{
+    animation: moveFromUp 2s forwards;
+}
+@keyframes moveFromUp {
+    0%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    80%{
+        transform: translateY(7px);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
 .icon.change .hamburger {
     background: rgba(0,0,0,0);
     box-shadow: none;
