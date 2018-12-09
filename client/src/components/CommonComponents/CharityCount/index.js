@@ -1,52 +1,60 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/sort-comp */
 /* eslint-disable react/prop-types */
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { CountContext } from '../../Context/CountContext';
 
 import './style.css';
 
-class CharityCount extends Component {
-  state = {
-    CharityList: [],
-  };
-
-  static getDerivedStateFromProps() {
-    const CharityList = JSON.parse(localStorage.getItem('listCharity'));
-    return { CharityList };
-  }
-
-  render() {
-    const { CharityList } = this.state;
-    const select = CharityList || [];
-    const count = select.length;
-    let str = '/compare?';
-    str += `${select.map((x, i) => `charity${i + 1}=${x}`).join('&')}`;
-    return (
-      <Link to={count > 1 && str}>
+const CharityCount = () => (
+  <CountContext.Consumer>
+    {props => {
+      const { charityList, removeCharity } = props;
+      const count = charityList.length;
+      const str = `/compare?${charityList
+        .map((charity, i) => `charity${i + 1}=${charity.charityId}`)
+        .join('&')}`;
+      return (
         <div className="count-charity">
-          <div className="tooltip">
-            <img
-              className="img-charity"
-              src="http://www7.0zz0.com/2018/12/05/10/361893112.png"
-              alt="img charity"
-            />
-            <div className="count">
-              <strong>{count}</strong>
-            </div>
-            <span className="tooltiptext place">
-              {count > 1 ? (
-                <span>compare</span>
-              ) : (
-                <span>
-                  Add and compare at least <strong>two maximum three</strong>
+          <div className="charity--box">
+            {charityList.map(charity => (
+              <div className="charity--row">
+                <span className="charity--name">{charity.name}</span>
+                <span
+                  onClick={() => removeCharity(charity.charityId)}
+                  className="charity--remove"
+                >
+                  -
                 </span>
-              )}
-            </span>
+              </div>
+            ))}
           </div>
+          <Link to={count > 1 && str}>
+            <div className="tooltip">
+              <img
+                className="img-charity"
+                src="http://www7.0zz0.com/2018/12/05/10/361893112.png"
+                alt="img charity"
+              />
+              <div className="count">
+                <strong>{count}</strong>
+              </div>
+              {/* {count > 1 ? (
+                  <span>compare</span>
+                ) : (
+        
+                  <span>
+                    Add and compare at least <strong>two maximum three</strong>
+                  </span>
+                )} */}
+            </div>
+          </Link>
         </div>
-      </Link>
-    );
-  }
-}
+      );
+    }}
+  </CountContext.Consumer>
+);
 
 export default CharityCount;
