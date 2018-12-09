@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './index.css';
-import { LevelBar0, LevelBar1,LevelBar2,LevelBar3 } from '../../LevelBar';
+import { Link } from 'react-router-dom';
+import { LevelBar0, LevelBar1, LevelBar2, LevelBar3 } from '../../LevelBar';
 
 const returnFlag = flag => {
   if (flag === '1') {
-    return <img className="flagImg" src="https://imgur.com/GmAnTas.png" />;
+    return <LevelBar0 />;
   }
   if (flag === '0') {
-    return <img className="flagImg" src="https://imgur.com/cO7uPgA.png" />;
+    return <LevelBar1 />;
   }
-  return <img className="flagImg" src="https://imgur.com/JrMn3j9.png" />;
+  return <LevelBar3 />;
 };
 
 const Governance = props => {
@@ -27,12 +28,14 @@ const Governance = props => {
                 trustees
               </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5>Trustees Biography</h5>
           </div>
           <div className="table-cell">
-            <h5>Tearm on Board</h5>
+            <h5>Term on Board</h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5>ECR</h5>
@@ -66,18 +69,10 @@ const Governance = props => {
           })}
         </div>
         <div className="cLogo-div">
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
+          {arrayOfCharity.map(charity => {
+            const { img } = charity;
+            return <img className="charity-logo" src={img[0].url} />;
+          })}
         </div>
         <div className="columns-div">
           {arrayOfCharity.map(charity => {
@@ -95,23 +90,13 @@ const Governance = props => {
             return (
               <div className="charity-column">
                 <div className="column-cell">
-                  <LevelBar0/>
+                  {returnFlag(numberOfTrustees)}
                 </div>
                 <div className="column-cell">
-                <LevelBar1/>
-                  {// {returnFlag(trusteesBiography)}
-                }
+                  {returnFlag(trusteesBiography)}
                 </div>
-                <div className="column-cell">
-                <LevelBar2/>
-              {  // {returnFlag(tob)}
-            }
-                </div>
-                <div className="column-cell">
-                {// {executiveCompensation}
-              }
-              <LevelBar3/>
-                </div>
+                <div className="column-cell">{returnFlag(tob)}</div>
+                <div className="column-cell">{executiveCompensation}</div>
                 <div className="column-cell">{returnFlag(policyGeneral)}</div>
                 <div className="column-cell">
                   {returnFlag(policyWhistleblowing)}
@@ -126,9 +111,11 @@ const Governance = props => {
           })}
         </div>
         <div className="donate-buttons">
-        <button className="donate-b">Donate</button>
-        <button className="donate-b">Donate</button>
-        <button className="donate-b">Donate</button>
+          {arrayOfCharity.map(() => (
+            <Link to="/under-construction" className="donate-b">
+              donate
+            </Link>
+          ))}
         </div>
       </div>
     </div>

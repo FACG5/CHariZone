@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './index.css';
-import { CircularLevel0, CircularLevel50, CircularLevel100 } from '../../CircularLevel';
+import {
+  CircularLevel0,
+  CircularLevel50,
+  CircularLevel100,
+} from '../../CircularLevel';
 
 const returnFlag = flag => {
   if (flag === '1') {
@@ -21,7 +27,8 @@ const Impact = props => {
         <div className="table-column">
           <div className="table-cell">
             <h5 className="tooltip">
-              Results<span className="tooltiptext">Impact: Results reporting</span>
+              Results
+              <span className="tooltiptext">Impact: Results reporting</span>
             </h5>
           </div>
           <div className="table-cell">
@@ -32,7 +39,7 @@ const Impact = props => {
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
-            Measurement Framework
+              Measurement Framework
               <span className="tooltiptext">
                 Mention of Theory/ Model / measurement
               </span>
@@ -52,18 +59,10 @@ const Impact = props => {
           })}
         </div>
         <div className="cLogo-div">
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
-          <img
-            className="charity-logo"
-            src="https://files.gitter.im/othman-shamla/dbdB/image.png"
-          />
+          {arrayOfCharity.map(charity => {
+            const { img } = charity;
+            return <img className="charity-logo" src={img[0].url} />;
+          })}
         </div>
         <div className="columns-div">
           {arrayOfCharity !== undefined
@@ -76,20 +75,22 @@ const Impact = props => {
                 return (
                   <div className="charity-column">
                     <div className="column-cell">
-                    <CircularLevel0/>
-                    { // {returnFlag(impactResults)}
-                  }
+                      <CircularLevel0 />
+                      {
+                        // {returnFlag(impactResults)}
+                      }
                     </div>
                     <div className="column-cell">
-                      <CircularLevel50/>
-                    {  // {returnFlag(impactReporting)}
-                  }
+                      <CircularLevel50 />
+                      {
+                        // {returnFlag(impactReporting)}
+                      }
                     </div>
                     <div className="column-cell">
-                      <CircularLevel100/>
-                    {  // {returnFlag(mentionOfTheory)}
-                  }
-
+                      <CircularLevel100 />
+                      {
+                        // {returnFlag(mentionOfTheory)}
+                      }
                     </div>
                   </div>
                 );
@@ -97,9 +98,11 @@ const Impact = props => {
             : ''}
         </div>
         <div className="donate-buttons">
-        <button className="donate-b">Donate</button>
-        <button className="donate-b">Donate</button>
-        <button className="donate-b">Donate</button>
+          {arrayOfCharity.map(() => (
+            <Link to="/under-construction" className="donate-b">
+              donate
+            </Link>
+          ))}
         </div>
       </div>
     </div>

@@ -66,6 +66,20 @@ class Comparison extends Component {
     return <HomeInfo arrayOfCharity={arrayOfCharity} />;
   };
 
+  chickInformation = () => {
+    const { tabs } = this.state;
+    if (tabs === 2) {
+      return   "Using data available from the Charity Commission, ChariZone considers the financial health of a charity. Below are our key ratios common across all charities to assess the financial management, efficiency and security.";
+    }
+  if (tabs === 3) {
+    return"The governing board has the ultimate oversight authority for any charitable organization. In this section, ChariZone searches the charity's annual report and websites looking for evidence of an effective board and their willingness to disclose basic policy information to the public. We refer to the Charity Governance Code for guidance.";
+  }
+  if (tabs === 4) {
+    return "Measuring impact is complicated but we expect all charities, regardless of their size, to regularly assess their effectiveness in achieving its charitable mission. ChariZone takes a deep dive into the charity's annual report and websites looking for disclosure of the below three elements"
+  }
+  return '';
+  }
+
   render() {
     const { tabs } = this.state;
     return (
@@ -124,7 +138,7 @@ class Comparison extends Component {
 
             {this.renderTab()}
           </div>
-        <TabInformation/>
+        <TabInformation chickInformation={this.chickInformation()}/>
         </div>
 
         <Footer />
