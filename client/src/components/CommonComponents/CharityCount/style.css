@@ -4,6 +4,7 @@
     bottom: 20%;
     cursor: pointer;
     display: flex;
+    z-index: 99;
 }
 
 .count {
