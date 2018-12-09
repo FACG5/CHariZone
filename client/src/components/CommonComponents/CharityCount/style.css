@@ -1,97 +1,57 @@
 .count-charity {
-	display: flex;
-	flex-direction: column;
-	position: fixed;
-	right: 5%;
-	bottom: 20%;
-	text-align: center;
+    position: fixed;
+    right: 10%;
+    bottom: 20%;
+    cursor: pointer;
+    display: flex;
+    z-index: 99;
 }
-
-.tooltip {
-	cursor: pointer;
-	position: relative;
-	display: inline-block;
-}
-
-.tooltip:hover {
-	/* border-bottom: 1px dotted black; */
-}
-
-.charity--box {
-	visibility: hidden;
-	/* width: 120px; */
-	/* color: #fff; */
-	/* text-align: center; */
-	/* border-radius: 6px; */
-	/* padding: 5px 0; */
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
-  }
-  
-  .tooltip:hover .charity--box {
-	visibility: visible;
-  }
-  
 
 .count {
-	background-color: #222;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #fff;
-	font-size: 30px;
-	position: absolute;
-	top: 40px;
-	left: 45px;
+    background-color: #222;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    top: 40px;
+    left: 45px;
 }
 
 .img-charity {
-	height: 75px;
-	width: 75px;
-	position: absolute;
-	color: #0067dd;
+    height: 75px;
+    width: 75px;
+    position: absolute;
+    color: #0067dd;
 }
 
 .place {
-	bottom: -25px;
-	right: -50px;
+    bottom: -25px;
+    right: -50px;
 	padding: 5px !important;
-}
-
-.charity--box {
-	/* visibility: hidden; */
-	padding: 10px;
-	height: 130px;
-	background: #fff;
-	box-shadow: 3px 7px 10px #888888;
-	width: 200px;
-	background-color:red; 
-}
-
-.charity--box span {
-	text-align: left;
-	font-size: 11px;
-	margin-bottom: 5px;
-}
-
-/* .count-charity a:hover + .charity--box {
-	visibility: visible;
-	opacity: 1;
-} */
-
-.charity--box .charity--remove {
-	font-size: 20px;
-	border: none;
-	background-color: #0067dd;
-	padding: 0px 4px;
+	background: #fff !important;
+	color: #000 !important;
+	font-size: 12px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 250px !important;
 }
 
 .charity--row {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	padding: 5px;
+}
+
+.charity--name {
+	color: #0067dd;
+	text-align: left;
+}
+
+.charity--remove {
+	color: red;
+	margin-left: 3px;
 }
