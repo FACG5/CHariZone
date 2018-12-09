@@ -1,6 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './index.css';
+import {
+  CircularLevel0,
+  CircularLevel50,
+  CircularLevel100,
+} from '../../CircularLevel';
 
 const returnFlag = flag => {
   if (flag === '1') {
@@ -20,18 +27,19 @@ const Impact = props => {
         <div className="table-column">
           <div className="table-cell">
             <h5 className="tooltip">
-              I: R<span className="tooltiptext">Impact: Results reporting</span>
+              Results
+              <span className="tooltiptext">Impact: Results reporting</span>
             </h5>
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
-              I:I
+              Impact
               <span className="tooltiptext">Impact reporting</span>
             </h5>
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
-              I: Measure
+              Measurement Framework
               <span className="tooltiptext">
                 Mention of Theory/ Model / measurement
               </span>
@@ -50,6 +58,12 @@ const Impact = props => {
             );
           })}
         </div>
+        <div className="cLogo-div">
+          {arrayOfCharity.map(charity => {
+            const { img } = charity;
+            return <img className="charity-logo" src={img[0].url} />;
+          })}
+        </div>
         <div className="columns-div">
           {arrayOfCharity !== undefined
             ? arrayOfCharity.map(charity => {
@@ -61,18 +75,34 @@ const Impact = props => {
                 return (
                   <div className="charity-column">
                     <div className="column-cell">
-                      {returnFlag(impactResults)}
+                      <CircularLevel0 />
+                      {
+                        // {returnFlag(impactResults)}
+                      }
                     </div>
                     <div className="column-cell">
-                      {returnFlag(impactReporting)}
+                      <CircularLevel50 />
+                      {
+                        // {returnFlag(impactReporting)}
+                      }
                     </div>
                     <div className="column-cell">
-                      {returnFlag(mentionOfTheory)}
+                      <CircularLevel100 />
+                      {
+                        // {returnFlag(mentionOfTheory)}
+                      }
                     </div>
                   </div>
                 );
               })
             : ''}
+        </div>
+        <div className="donate-buttons">
+          {arrayOfCharity.map(() => (
+            <Link to="/under-construction" className="donate-b">
+              donate
+            </Link>
+          ))}
         </div>
       </div>
     </div>

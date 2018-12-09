@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './index.css';
+import { Link } from 'react-router-dom';
+import { LevelBar0, LevelBar1, LevelBar2, LevelBar3 } from '../../LevelBar';
 
 const returnFlag = flag => {
   if (flag === '1') {
-    return <img className="flagImg" src="https://imgur.com/GmAnTas.png" />;
+    return <LevelBar0 />;
   }
   if (flag === '0') {
-    return <img className="flagImg" src="https://imgur.com/cO7uPgA.png" />;
+    return <LevelBar1 />;
   }
-  return <img className="flagImg" src="https://imgur.com/JrMn3j9.png" />;
+  return <LevelBar3 />;
 };
 
 const Governance = props => {
@@ -20,36 +22,38 @@ const Governance = props => {
         <div className="table-column">
           <div className="table-cell">
             <h5 className="tooltip">
-              T:NO
+              Number of Trustees
               <span className="tooltiptext">
                 NUMBER OF TRUSTEES recommend under 15 trustees and over 2
                 trustees
               </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>T:Bio</h5>
+            <h5>Trustees Biography</h5>
           </div>
           <div className="table-cell">
-            <h5>T:ToB</h5>
+            <h5>Term on Board</h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>EC</h5>
+            <h5>ECR</h5>
           </div>
           <div className="table-cell">
-            <h5>P:GDPR</h5>
+            <h5>Compliance with GDPR</h5>
           </div>
           <div className="table-cell">
-            <h5>P:W</h5>
+            <h5>Whistleblowing</h5>
           </div>
           <div className="table-cell">
-            <h5>P:H&S</h5>
+            <h5>Health & Safety</h5>
           </div>
           <div className="table-cell">
-            <h5>P:SG</h5>
+            <h5>Saveguarding policy</h5>
           </div>
           <div className="table-cell">
-            <h5>P: FP</h5>
+            <h5>Fundraising Promise</h5>
           </div>
         </div>
       </div>
@@ -62,6 +66,12 @@ const Governance = props => {
                 <h3>{name}</h3>
               </div>
             );
+          })}
+        </div>
+        <div className="cLogo-div">
+          {arrayOfCharity.map(charity => {
+            const { img } = charity;
+            return <img className="charity-logo" src={img[0].url} />;
           })}
         </div>
         <div className="columns-div">
@@ -99,6 +109,13 @@ const Governance = props => {
               </div>
             );
           })}
+        </div>
+        <div className="donate-buttons">
+          {arrayOfCharity.map(() => (
+            <Link to="/under-construction" className="donate-b">
+              donate
+            </Link>
+          ))}
         </div>
       </div>
     </div>
