@@ -24,8 +24,8 @@ const Governance = props => {
             <h5 className="tooltip">
               Number of Trustees
               <span className="tooltiptext">
-                NUMBER OF TRUSTEES recommend under 15 trustees and over 2
-                trustees
+                According to the Charity Governance code, a board of trustees of
+                at least 5 but no more than 12 is typically good practice.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
@@ -34,26 +34,80 @@ const Governance = props => {
             <h5>Trustees Biography</h5>
           </div>
           <div className="table-cell">
-            <h5>Term on Board</h5>
+            <h5 className="tooltip">
+              Term on Board
+              <span className="tooltiptext">
+                With this , we look if the charity has a policy for how long the
+                trustees serve on board. This ensures a regular process of
+                assessing the skills, ability and experience of board members
+              </span>
+            </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5>ECR</h5>
           </div>
           <div className="table-cell">
-            <h5>Compliance with GDPR</h5>
+            <h5 className="tooltip">
+              Compliance with GDPR
+              <span className="tooltiptext">
+                General Data Protection Regulation cites tougher rules around
+                the handling of personal information. We would like to see
+                enforceability and disclosure of this legislation on both the
+                website and the annual report of the charity.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>Whistleblowing</h5>
+            <h5 className="tooltip">
+              Whistleblowing
+              <span className="tooltiptext">
+                A charity should be a safe and trusted environment. Any person
+                is able to complain about a charity to the Police, Fundraising
+                Regulator and the Charity Commission.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>Health & Safety</h5>
+            <h5 className="tooltip">
+              Health & Safety
+              <span className="tooltiptext">
+                GAll charities must have a health and safety policy. We are keen
+                to see charities open about disclosign their policy emphasising
+                the importance of looking after their employees and volunteers.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>Saveguarding policy</h5>
+            <h5 className="tooltip">
+              Saveguarding policy
+              <span className="tooltiptext">
+                Safeguarding should be a key governance priority for all
+                charities, regardless of size, type or income, not just those
+                working with groups traditionally considered at risk. Charities
+                must put safeguards in place to protect those who come into
+                contact with your charity. We would like to see emphasis and
+                disclosure of this key policy on the website and the annual
+                report of the charity.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>Fundraising Promise</h5>
+            <h5 className="tooltip">
+              Fundraising Promise
+              <span className="tooltiptext">
+                Outlines our commitment to donors and the general public Those
+                who register with the Fundraising Regulator agree to ensure
+                their fundraising is legal, open, honest and respectful. The
+                standards for fundraising are set out in the Code of Fundraising
+                Practice.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
         </div>
       </div>
