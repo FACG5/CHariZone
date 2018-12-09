@@ -45,24 +45,6 @@ const Contact = props => {
             </tr>
             <tr>
               <td>
-                <span className="header">Website </span>
-              </td>
-              <td className="header--items">
-                <span>
-                  <button
-                    className="button--link-website"
-                    type="button"
-                    onClick={() => {
-                      window.location = `http://${website}`;
-                    }}
-                  >
-                    {website}
-                  </button>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>
                 <span className="header">Address </span>
               </td>
               <td className="header--items">
