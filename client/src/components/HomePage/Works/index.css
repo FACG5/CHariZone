@@ -56,6 +56,8 @@
     width:40px;
     height:40px;
     margin-top: 12px; 
+    animation: moveRightLeft 7s infinite;
+    animation-fill-mode: backwards;
 }
 
 .worksInnerTitle{
@@ -66,4 +68,12 @@
 .cardContent{
     display: inline-block;
     font-family: "Bitter";
+}
+@keyframes moveRightLeft{
+    0%{
+        transform: rotateX(0);
+    }
+    100%{
+        transform: rotateY(360deg);
+    }
 }
