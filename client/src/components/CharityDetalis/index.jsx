@@ -163,10 +163,11 @@ class CharityDetalis extends Component {
         />
       );
     }
-    const { objective, who, what, how } = this.state.charity;
+    const { objective, who, what, how, website } = this.state.charity;
     return (
       <MainDetails
         objective={objective.toLowerCase()}
+        website={website}
         who={who.map(x => x.toLowerCase())}
         how={what.map(x => x.toLowerCase())}
         what={how.map(x => x.toLowerCase())}
