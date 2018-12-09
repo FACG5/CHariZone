@@ -28,22 +28,33 @@ const Impact = props => {
           <div className="table-cell">
             <h5 className="tooltip">
               Results
-              <span className="tooltiptext">Impact: Results reporting</span>
+              <span className="tooltiptext">
+                We look for Results focused culture . evidence on the website
+                and annual of clear and comprehensive evidence of positive
+                results . And openness in sharing results with the public
+              </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
               Impact
-              <span className="tooltiptext">Impact reporting</span>
+              <span className="tooltiptext">
+                We would like to see evidence of charity's activities and
+                results meeting its long term ambitions.
+              </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
               Measurement Framework
               <span className="tooltiptext">
-                Mention of Theory/ Model / measurement
+                Is the charity giving us a better understanding of how they link
+                the results with impact.
               </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
         </div>
       </div>
