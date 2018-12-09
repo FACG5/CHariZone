@@ -49,7 +49,15 @@ const Contact = props => {
               </td>
               <td className="header--items">
                 <span>
-                  <a href="{website}">{website}</a>
+                  <button
+                    className="button--link-website"
+                    type="button"
+                    onClick={() => {
+                      window.location = `http://${website}`;
+                    }}
+                  >
+                    {website}
+                  </button>
                 </span>
               </td>
             </tr>
