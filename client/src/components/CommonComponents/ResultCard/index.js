@@ -46,12 +46,18 @@ const ResultCard = props => {
         <p>" {text} "</p>
       </Link>
       <div className="div--two-button">
-        <button type="button" onClick={() => onClickDonate()}>
+        <button
+          type="button"
+          className="button-compare-donate"
+          onClick={() => onClickDonate()}
+        >
           Donate
         </button>
         <button
           type="button"
-          className={isActive ? 'active' : null}
+          className={
+            isActive ? 'button-compare-donate active' : 'button-compare-donate'
+          }
           onClick={() => onClickCompare()}
         >
           {isActive ? <span>-</span> : <span>+</span>} Compare
