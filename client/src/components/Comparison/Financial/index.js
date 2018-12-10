@@ -16,9 +16,10 @@ const Financial = props => {
             <h5 className="tooltip">
               Expense and Managment
               <span className="tooltiptext">
-                3YR AVERAGE EXPENSE & MANAGEMENT RATIO Admin Cost Ratio = (Total
-                Fundraising, General, and admin expense) ÷ (Total expense) flag
-                over 20%
+                Effective charities must continuously develop their strategy,
+                invest in their infrastructure and attract talent. However,
+                these administrative expenses remain reasonable and in line with
+                its charitable mission.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
@@ -27,8 +28,9 @@ const Financial = props => {
             <h5 className="tooltip">
               Fundraising Effeiciancy
               <span className="tooltiptext">
-                3YEAR AVERAGE FUNDRAISING EFFECIENCY : Vol_exp/ Vol-income flag
-                over 20%
+                Defintion : Charities must be efficient fundraisers, spending
+                less to raise more. We calculate this ratio by determining how
+                much it spends to generate £1 in voluntary income.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
@@ -37,22 +39,28 @@ const Financial = props => {
             <h5 className="tooltip">
               Capacity Ratio
               <span className="tooltiptext">
-                EFFICIENCY & CAPACITY RATIO Expense Growth = (Expense(n)
-                -Expense (n-1) ) ÷ (Total resources used(n-1))
+                Charities that spend more year over year on their programs and
+                services have a greater impact on their charitable missions.
+                This ratio indicates the charity's capacity to receive new
+                donation and use it promptly.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>Donor dependency</h5>
+            <h5 className="tooltip">
+            Donor dependency
+  <span className="tooltiptext">
+Defintion :We would like to know how dependent the charity is on your donation vs other forms of income. This clearly depends on the type of charity we are considering.
+      </span>
+            </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
               Working Captial Ratio
               <span className="tooltiptext">
-                Current Ratio = (net current assets-/net current liability)
-                healthy between 2-10
+              Does thee charity have enough to survive a rainy day? 
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
