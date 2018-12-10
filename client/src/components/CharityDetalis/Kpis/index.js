@@ -44,12 +44,15 @@ const Kpis = (props) => {
       <div className="kpi--row">
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>3YR Average Expense & Managemant Ratio<p className="descrip-def">ChariZone would like to see this ratio below 25%</p></span>
+            <span>3YR Average Expense & Managemant Ratio</span>
             <div className="progressBar">
               <CircularProgressbar
                 strokeWidth="13"
                 percentage={EMR.replace('%', '')}
                 text={EMR} />
+            </div>
+            <div className="overlayInner">
+            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
             </div>
           </div>
           <div className="kpi--item">
@@ -60,6 +63,9 @@ const Kpis = (props) => {
                 percentage={averageFundraising.replace('%', '')}
                 text={averageFundraising}
               />
+               <div className="overlayInner">
+            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
+            </div>
             </div>
           </div>
         </div>
@@ -70,32 +76,44 @@ const Kpis = (props) => {
               <CircularProgressbar
                 strokeWidth="13"
                 percentage={Ecr.replace('%', '')}
-                text={Ecr}
-              />
+                text={Ecr} />
+            </div>
+            <div className="minMax">
+                <div className="innerMaxMin">
+                  <span>Min</span>
+                  <span>10%</span>
+                </div>
+                <div className="innerMaxMin">
+                <span>Max</span>
+                <span>25%</span>
+                </div>
+              </div>
+            <div className="overlayInner">
+            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
             </div>
           </div>
-          <div className="kpi--item">
+          <div className="kpi--item ">
+          <div className="lastItem">
             <span>Current Ratio</span>
             <span>{`${Currr}`.substr(0, 5)}</span>
-            {/* <span>EFFICIENCY & CAPACITY RATIO
-            </span>
-            <span>1.9</span> */}
+            </div>
+            <div className="overlayInner">
+            <p className="descrip-def innerDef">plaaaace holder</p>
+            </div>
           </div>
-          {/* <div className="kpi--item">
-            <span>Current Ratio</span>
-            <span>-</span>
-
-          </div> */}
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Doner Dependency<p className="descrip-def">How dependent the charity is on your donation vs other forms on income. </p></span>
+            <span>Doner Dependency</span>
             <div className="progressBar">
               <CircularProgressbar
                 strokeWidth="13"
                 percentage={donerDependency.replace('%', '')}
                 text={donerDependency}
               />
+               <div className="overlayInner">
+               <p className="descrip-def">How dependent the charity is on your donation vs other forms on income. </p>
+            </div>
             </div>
           </div>
         </div>
