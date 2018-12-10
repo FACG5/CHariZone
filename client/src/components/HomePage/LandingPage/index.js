@@ -56,6 +56,7 @@ class LandingPage extends Component {
             >
               <div className="hamburger" />
               <div className="items" id="items">
+                <a href="#Advanced">SEARCH</a>
                 <a href="#Works">HOW IT WORKS</a>
                 <a href="#Slider">CATEGORIES</a>
                 <a href="#Contact">CONTACT US</a>
@@ -64,6 +65,7 @@ class LandingPage extends Component {
           </nav>
         </header>
         <section className="landing-page">
+        <a name="Advanced" title="search" />
           <div className="rgba">
             {defaultShow && (
               <div className="to-hide">
@@ -74,10 +76,12 @@ class LandingPage extends Component {
                       <span style={spanStyle}>ZONE</span>
                     </p>
                   </div>
+                  
                   <div className="subLogo">
                     <p>Search, compare and donate</p>
                   </div>
                 </div>
+               
                 <div className="search">
                   <input
                     placeholder="By Keyword, Name"
