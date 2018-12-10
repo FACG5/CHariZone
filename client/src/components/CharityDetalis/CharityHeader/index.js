@@ -2,12 +2,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './style.css';
+import { CountContext } from '../../Context/CountContext';
 
-const ClassNameCompareBtn = charityNumber => {
-  const arraySelect = JSON.parse(localStorage.getItem('listCharity')) || [];
+const ClassNameCompareBtn = (charityNumber, arraySelect) => {
   let ChangeCompareColor = 'compareBtn';
-  if (arraySelect.includes(`${charityNumber}`)) {
+  const arr = arraySelect.map(charity => charity.charityId);
+  if (arr.includes(`${charityNumber}`)) {
     ChangeCompareColor += ' active';
   }
   return ChangeCompareColor;
@@ -29,15 +31,7 @@ const Donate = history => {
 };
 
 const CharityHeader = props => {
-  const {
-    changeTab,
-    name,
-    tabs,
-    ChangeCompare,
-    charityNumber,
-    img,
-    history,
-  } = props;
+  const { changeTab, name, tabs, charityNumber, img, history } = props;
   return (
     <div>
       <img alt="" id="charity--img" src={GetImgUrl(img)} />
@@ -53,25 +47,32 @@ const CharityHeader = props => {
             </li>
           ))}
         </ul>
-        <div style={{ margin: 23 }}>
-          <button
-            className={ClassNameCompareBtn(charityNumber)}
-            onClick={ChangeCompare}
-            type="button"
-          >
-            add to compare
-          </button>
-          <button
-            className="compareBtn active"
-            onClick={() => Donate(history)}
-            type="button"
-          >
-            Donate
-          </button>
-        </div>
+        <CountContext.Consumer>
+          {consumer => {
+            const { changeActive, charityList } = consumer;
+            return (
+              <div style={{ margin: 23 }}>
+                <button
+                  className={ClassNameCompareBtn(charityNumber, charityList)}
+                  onClick={() => changeActive(charityNumber, name)}
+                  type="button"
+                >
+                  Add To Compare
+                </button>
+                <button
+                  className="compareBtn active"
+                  onClick={() => Donate(history)}
+                  type="button"
+                >
+                  Donate
+                </button>
+              </div>
+            );
+          }}
+        </CountContext.Consumer>
       </div>
     </div>
   );
 };
 
-export default CharityHeader;
+export default withRouter(CharityHeader);

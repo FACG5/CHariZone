@@ -3,7 +3,11 @@ import React from 'react';
 import './style.css';
 
 const MainDetails = props => {
-  const { objective, who, what, how } = props;
+  let { objective, who, what, how, website } = props;
+  if (!new RegExp(/(^http:\/\/)|(^https:\/\/)/).test(website)) {
+    website = `http://${website}`;
+  }
+
   return (
     <div className="mainDetails">
       <table>
@@ -14,6 +18,16 @@ const MainDetails = props => {
             </td>
             <td className="header--items">
               <span>{objective}</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span className="header">Website</span>
+            </td>
+            <td className="header--items">
+              <span>
+                <a href={website}>{website}</a>
+              </span>
             </td>
           </tr>
           <tr>

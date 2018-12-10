@@ -1,3 +1,11 @@
 .name-cell {
   max-height: none;
 }
+
+.name-column:hover {
+  text-decoration: underline;
+}
+
+.name-column{
+  cursor: pointer;
+}

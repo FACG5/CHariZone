@@ -22,7 +22,27 @@
     transform: translate( -50%, -30%); 
     font-size: 35px; 
 }
-.circle1{
+
+.notFoundButton {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate( -50%, -30%); 
+    font-family: "Spectral";
+    margin: 10px;
+    width: 110px;
+    padding: 7px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background-color: #0067bb;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 20px;
+    color: #EFF0F2;
+}
+
+.circle1 {
     width: 260px;
     height: 260px;
     background-color: #0067bb;

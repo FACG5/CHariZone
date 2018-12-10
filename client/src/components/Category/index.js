@@ -12,21 +12,21 @@ import CharityCount from '../CommonComponents/CharityCount';
 import Header from '../Header';
 import Footer from '../HomePage/Footer';
 import ResultCard from '../CommonComponents/ResultCard';
+import { CountContext } from '../Context/CountContext';
 
 class Category extends Component {
   state = {
     data: [],
     activeMore: false,
     isData: false,
-    refresh: false,
+    // refresh: false,
   };
 
   componentWillMount = () => {
-    const listCharity = JSON.parse(localStorage.getItem('listCharity')) || [];
-    this.getData(listCharity);
+    this.getData();
   };
 
-  getData = listCharity => {
+  getData = () => {
     const {
       location: { search },
     } = this.props;
@@ -65,9 +65,6 @@ class Category extends Component {
               'https://www.atlrewards.net/cwa-nearby-areas-portlet/images/nologo.png';
           }
           object.isActive = false;
-          if (listCharity.includes(item.regno)) {
-            object.isActive = true;
-          }
           return object;
         });
 
@@ -102,29 +99,6 @@ class Category extends Component {
   handlerPageDonate = () => {
     const { history } = this.props;
     history.push('/under-construction');
-  };
-
-  changeActive = (id, idChirty) => {
-    const { data, refresh } = this.state;
-    const arraySelect = JSON.parse(localStorage.getItem('listCharity')) || [];
-    const charitylist = arraySelect.filter(charity => charity !== idChirty);
-    if (charitylist.length === arraySelect.length) {
-      charitylist.push(idChirty);
-    }
-    const count = charitylist.length;
-    const charities = data.map(charity => {
-      if (id === charity.id && (charity.isActive || count <= 3)) {
-        charity.isActive = !charity.isActive;
-      }
-      return charity;
-    });
-    if (charitylist.length <= 3) {
-      localStorage.setItem('listCharity', JSON.stringify(charitylist));
-      this.setState({
-        data: charities,
-        refresh: !refresh,
-      });
-    }
   };
 
   capitalFirst = string =>
@@ -170,91 +144,128 @@ class Category extends Component {
               <CharityCount refresh={refresh} />
               <div className="container">
                 <div className="result-cards">
-                  {data.slice(0, 5).map(item => {
-                    const {
-                      idChirty,
-                      id,
-                      isActive,
-                      logo,
-                      name,
-                      text,
-                      governance,
-                      impact,
-                      financial,
-                    } = item;
-                    return (
-                      <ResultCard
-                        extraClass="result-cards-caregory"
-                        idChirty={idChirty}
-                        key0={id}
-                        isActive={isActive}
-                        onClickCompare={() =>
-                          this.changeActive(item.id, item.idChirty)
-                        }
-                        onClickDonate={() => this.handlerPageDonate()}
-                        logo={logo}
-                        name={this.capitalFirst(name)}
-                        text={this.capitalFirst(this.stringIsMore(name, text))}
-                        financial={this.handleFromat(
-                          'financial',
-                          financial,
-                          '#DIV/0!',
-                          6
-                        )}
-                        governance={this.handleFromat(
-                          'governance',
+                  <CountContext.Consumer>
+                    {consumer => {
+                      const { charityList, changeActive } = consumer;
+                      const charityListId = charityList.map(
+                        charity => charity.charityId
+                      );
+                      const dataActive = data.map(charity => {
+                        charity.isActive = charityListId.includes(
+                          charity.idChirty
+                        );
+                        return charity;
+                      });
+                      return dataActive.slice(0, 5).map(item => {
+                        const {
+                          idChirty,
+                          id,
+                          isActive,
+                          logo,
+                          name,
+                          text,
                           governance,
-                          ' -   ',
-                          8
-                        )}
-                        impact={this.handleFromat('impact', impact, ' -   ', 3)}
-                      />
-                    );
-                  })}
+                          impact,
+                          financial,
+                        } = item;
+                        return (
+                          <ResultCard
+                            extraClass="result-cards-caregory"
+                            idChirty={idChirty}
+                            key0={id}
+                            isActive={isActive}
+                            onClickCompare={() =>
+                              changeActive(item.idChirty, item.name)
+                            }
+                            onClickDonate={() => this.handlerPageDonate()}
+                            logo={logo}
+                            name={this.capitalFirst(name)}
+                            text={this.capitalFirst(
+                              this.stringIsMore(name, text)
+                            )}
+                            financial={this.handleFromat(
+                              'financial',
+                              financial,
+                              '#DIV/0!',
+                              6
+                            )}
+                            governance={this.handleFromat(
+                              'governance',
+                              governance,
+                              ' -   ',
+                              8
+                            )}
+                            impact={this.handleFromat(
+                              'impact',
+                              impact,
+                              ' -   ',
+                              3
+                            )}
+                          />
+                        );
+                      });
+                    }}
+                  </CountContext.Consumer>
                   {!activeMore && (
                     <More
                       specificٍSize={this.specificٍSize(data)}
                       getAllData={() => this.getAllData()}
                     />
                   )}
-                  {activeMore &&
-                    data
-                      .slice(5, data.length)
-                      .map(item => (
-                        <ResultCard
-                          extraClass="result-cards-caregory"
-                          idChirty={item.idChirty}
-                          key0={item.id}
-                          isActive={item.isActive}
-                          onClickCompare={() =>
-                            this.changeActive(item.id, item.idChirty)
-                          }
-                          onClickDonate={() => this.handlerPageDonate()}
-                          logo={item.logo}
-                          name={this.capitalFirst(item.name)}
-                          text={this.capitalFirst(
-                            this.stringIsMore(item.name, item.text)
-                          )}
-                          financial={this.handleFromat(
-                            'financial',
-                            item.financial,
-                            '#DIV/0!',
-                            6
-                          )}
-                          governance={this.handleFromat(
-                            'governance',
-                            item.governance,
-                            ' -   ',
-                            8
-                          )}
-                          impact={this.handleFromat(
-                            'impact',
-                            item.impact,
-                            ' -   ',
-                            3
-                          )}
-                        />
-                      ))}
+                  {activeMore && (
+                    <CountContext.Consumer>
+                      {consumer => {
+                        const { charityList, changeActive } = consumer;
+                        const charityListId = charityList.map(
+                          charity => charity.charityId
+                        );
+                        const dataActive = data.map(charity => {
+                          charity.isActive = charityListId.includes(
+                            charity.idChirty
+                          );
+                          return charity;
+                        });
+
+                        return dataActive
+                          .slice(5, data.length)
+                          .map(item => (
+                            <ResultCard
+                              extraClass="result-cards-caregory"
+                              idChirty={item.idChirty}
+                              key0={item.id}
+                              isActive={item.isActive}
+                              onClickCompare={() =>
+                                changeActive(item.idChirty, item.name)
+                              }
+                              onClickDonate={() => this.handlerPageDonate()}
+                              logo={item.logo}
+                              name={this.capitalFirst(item.name)}
+                              text={this.capitalFirst(
+                                this.stringIsMore(item.name, item.text)
+                              )}
+                              financial={this.handleFromat(
+                                'financial',
+                                item.financial,
+                                '#DIV/0!',
+                                6
+                              )}
+                              governance={this.handleFromat(
+                                'governance',
+                                item.governance,
+                                ' -   ',
+                                8
+                              )}
+                              impact={this.handleFromat(
+                                'impact',
+                                item.impact,
+                                ' -   ',
+                                3
+                              )}
+                            />
+                          ));
+                      }}
+                    </CountContext.Consumer>
+                  )}
                 </div>
                 <div className="category-details">
                   <CategoryDetails
