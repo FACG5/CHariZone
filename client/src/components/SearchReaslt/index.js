@@ -12,13 +12,13 @@ import CharityCount from '../CommonComponents/CharityCount';
 import Header from '../Header';
 import Footer from '../HomePage/Footer';
 import ResultCard from '../CommonComponents/ResultCard';
+import { CountContext } from '../Context/CountContext';
 
 class SearchReaslt extends Component {
   state = {
     data: [],
     activeMore: false,
     isData: false,
-    refresh: false,
   };
 
   capitalFirst = string =>
@@ -38,29 +38,6 @@ class SearchReaslt extends Component {
     return value === str ? 'Not analyzed yet' : `${value} / ${number}`;
   };
 
-  changeActive = (id, idChirty) => {
-    const { data, refresh } = this.state;
-    const arraySelect = JSON.parse(localStorage.getItem('listCharity')) || [];
-    const charitylist = arraySelect.filter(charity => charity !== idChirty);
-    if (charitylist.length === arraySelect.length) {
-      charitylist.push(idChirty);
-    }
-    const count = charitylist.length;
-    const charities = data.map(charity => {
-      if (id === charity.id && (charity.isActive || count <= 3)) {
-        charity.isActive = !charity.isActive;
-      }
-      return charity;
-    });
-    if (charitylist.length <= 3) {
-      localStorage.setItem('listCharity', JSON.stringify(charitylist));
-      this.setState({
-        data: charities,
-        refresh: !refresh,
-      });
-    }
-  };
-
   handlerPageDonate = () => {
     const { history } = this.props;
     history.push('/under-construction');
@@ -72,7 +49,7 @@ class SearchReaslt extends Component {
     this.setState({ activeMore: true });
   };
 
-  getData = listCharity => {
+  getData = () => {
     const {
       location: { search },
     } = this.props;
@@ -109,9 +86,6 @@ class SearchReaslt extends Component {
               'https://www.atlrewards.net/cwa-nearby-areas-portlet/images/nologo.png';
           }
           object.isActive = false;
-          if (listCharity.includes(item.regno)) {
-            object.isActive = true;
-          }
           return object;
         });
         if (keyword) {
@@ -124,7 +98,6 @@ class SearchReaslt extends Component {
             return arr;
           }, []);
         }
-
         this.setState({
           data: array,
           isData: true,
@@ -136,114 +109,153 @@ class SearchReaslt extends Component {
   };
 
   componentWillMount = () => {
-    const listCharity = JSON.parse(localStorage.getItem('listCharity')) || [];
-    this.getData(listCharity);
+    this.getData();
   };
 
+  renderLoadingBubbles = () => (
+    <div className="loading-bubbles">
+      <ReactLoading type="bubbles" color="#0067dd" height="20%" width="20%" />
+    </div>
+  );
+
   render() {
-    const { data, activeMore, isData, refresh } = this.state;
+    const { data, activeMore, isData } = this.state;
     return (
       <React.Fragment>
         <Header />
         <div className="body">
           {!isData ? (
-            <div className="loading-bubbles">
-              <ReactLoading
-                type="bubbles"
-                color="#0067dd"
-                height="20%"
-                width="20%"
-              />
-            </div>
+            <>{this.renderLoadingBubbles()}</>
           ) : (
             <>
               <HeaderSearch numberOfResult={data.length} />
-              <CharityCount refresh={refresh} />
+              <CharityCount />
               <div className="result-cards">
-                {data.slice(0, 5).map(item => {
-                  const {
-                    idChirty,
-                    id,
-                    isActive,
-                    logo,
-                    name,
-                    text,
-                    governance,
-                    impact,
-                    financial,
-                  } = item;
-                  return (
-                    <ResultCard
-                      idChirty={idChirty}
-                      key0={id}
-                      isActive={isActive}
-                      onClickCompare={() =>
-                        this.changeActive(item.id, item.idChirty)
+                <CountContext.Consumer>
+                  {consumer => {
+                    const { charityList, changeActive } = consumer;
+                    const charityListId = charityList.map(
+                      charity => charity.charityId
+                    );
+                    const dataActive = data.map(charity => {
+                      if (charityListId.includes(charity.idChirty)) {
+                        charity.isActive = true;
+                      } else {
+                        charity.isActive = false;
                       }
-                      onClickDonate={() => this.handlerPageDonate()}
-                      logo={logo}
-                      name={this.capitalFirst(name)}
-                      text={this.capitalFirst(this.stringIsMore(name, text))}
-                      financial={this.handleFromat(
-                        'financial',
-                        financial,
-                        '#DIV/0!',
-                        6
-                      )}
-                      governance={this.handleFromat(
-                        'governance',
+                      return charity;
+                    });
+                    return dataActive.slice(0, 5).map(item => {
+                      const {
+                        idChirty,
+                        id,
+                        isActive,
+                        logo,
+                        name,
+                        text,
                         governance,
-                        ' -   ',
-                        8
-                      )}
-                      impact={this.handleFromat('impact', impact, ' -   ', 3)}
-                    />
-                  );
-                })}
+                        impact,
+                        financial,
+                      } = item;
+                      return (
+                        <ResultCard
+                          idChirty={idChirty}
+                          key0={id}
+                          isActive={isActive}
+                          onClickCompare={() =>
+                            changeActive(item.idChirty, item.name)
+                          }
+                          onClickDonate={() => this.handlerPageDonate()}
+                          logo={logo}
+                          name={this.capitalFirst(name)}
+                          text={this.capitalFirst(
+                            this.stringIsMore(name, text)
+                          )}
+                          financial={this.handleFromat(
+                            'financial',
+                            financial,
+                            '#DIV/0!',
+                            6
+                          )}
+                          governance={this.handleFromat(
+                            'governance',
+                            governance,
+                            ' -   ',
+                            8
+                          )}
+                          impact={this.handleFromat(
+                            'impact',
+                            impact,
+                            ' -   ',
+                            3
+                          )}
+                        />
+                      );
+                    });
+                  }}
+                </CountContext.Consumer>
+                {!activeMore && (
+                  <More
+                    specificٍSize={this.specificٍSize(data)}
+                    getAllData={() => this.getAllData()}
+                  />
+                )}
+                {activeMore && (
+                  <CountContext.Consumer>
+                    {consumer => {
+                      const { charityList, changeActive } = consumer;
+                      const charityListId = charityList.map(
+                        charity => charity.charityId
+                      );
+                      const dataActive = data.map(charity => {
+                        if (charityListId.includes(charity.idChirty)) {
+                          charity.isActive = true;
+                        } else {
+                          charity.isActive = false;
+                        }
+                        return charity;
+                      });
+
+                      return dataActive
+                        .slice(5, data.length)
+                        .map(item => (
+                          <ResultCard
+                            idChirty={item.idChirty}
+                            key0={item.id}
+                            isActive={item.isActive}
+                            onClickCompare={() =>
+                              changeActive(item.idChirty, item.name)
+                            }
+                            onClickDonate={() => this.handlerPageDonate()}
+                            logo={item.logo}
+                            name={this.capitalFirst(item.name)}
+                            text={this.capitalFirst(
+                              this.stringIsMore(item.name, item.text)
+                            )}
+                            financial={this.handleFromat(
+                              'financial',
+                              item.financial,
+                              '#DIV/0!',
+                              6
+                            )}
+                            governance={this.handleFromat(
+                              'governance',
+                              item.governance,
+                              ' -   ',
+                              8
+                            )}
+                            impact={this.handleFromat(
+                              'impact',
+                              item.impact,
+                              ' -   ',
+                              3
+                            )}
+                          />
+                        ));
+                    }}
+                  </CountContext.Consumer>
+                )}
               </div>
-              {!activeMore && (
-                <More
-                  specificٍSize={this.specificٍSize(data)}
-                  getAllData={() => this.getAllData()}
-                />
-              )}
-              {activeMore &&
-                data
-                  .slice(5, data.length)
-                  .map(item => (
-                    <ResultCard
-                      idChirty={item.idChirty}
-                      key0={item.id}
-                      isActive={item.isActive}
-                      onClickCompare={() =>
-                        this.changeActive(item.id, item.idChirty)
-                      }
-                      onClickDonate={() => this.handlerPageDonate()}
-                      logo={item.logo}
-                      name={this.capitalFirst(item.name)}
-                      text={this.capitalFirst(
-                        this.stringIsMore(item.name, item.text)
-                      )}
-                      financial={this.handleFromat(
-                        'financial',
-                        item.financial,
-                        '#DIV/0!',
-                        6
-                      )}
-                      governance={this.handleFromat(
-                        'governance',
-                        item.governance,
-                        ' -   ',
-                        8
-                      )}
-                      impact={this.handleFromat(
-                        'impact',
-                        item.impact,
-                        ' -   ',
-                        3
-                      )}
-                    />
-                  ))}
             </>
           )}
           <Footer />

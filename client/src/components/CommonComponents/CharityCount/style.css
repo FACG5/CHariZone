@@ -32,5 +32,26 @@
 .place {
     bottom: -25px;
     right: -50px;
-    padding: 5px !important;
+	padding: 5px !important;
+	background: #fff !important;
+	color: #000 !important;
+	font-size: 12px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 250px !important;
+}
+
+.charity--row {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.charity--name {
+	color: #0067dd;
+	text-align: left;
+}
+
+.charity--remove {
+	color: red;
+	margin-left: 3px;
 }
