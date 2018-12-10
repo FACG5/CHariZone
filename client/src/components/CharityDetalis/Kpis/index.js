@@ -44,7 +44,7 @@ const Kpis = (props) => {
       <div className="kpi--row">
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>3YR Average Expense & Managemant Ratio</span>
+            <span>Expense and Management Ratio</span>
             <div className="progressBar">
               <CircularProgressbar
                 strokeWidth="13"
@@ -53,20 +53,15 @@ const Kpis = (props) => {
             </div>
             <div className="minMax">
                 <div className="innerMaxMin">
-                  <p>Min</p>
-                  <p>10%</p>
+                  <p>Flag over 20%</p>
+                  </div>
                 </div>
-                <div className="innerMaxMin">
-                <p>Max</p>
-                <p>25%</p>
-                </div>
-              </div>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
+            <p className="descrip-def innerDef">Effective charities must continuously develop their strategy, invest in their infrastructure and attract talent. However, these administrative expenses remain reasonable and in line with its charitable mission.</p>
             </div>
           </div>
           <div className="kpi--item">
-            <span>3Y Average Fundraising Effecincy</span>
+            <span>Fundraising Efficiency</span>
             <div className="progressBar">
               <CircularProgressbar
                 strokeWidth="13"
@@ -75,23 +70,18 @@ const Kpis = (props) => {
               />
                 <div className="minMax">
                 <div className="innerMaxMin">
-                  <p>Min</p>
-                  <p>10%</p>
-                </div>
-                <div className="innerMaxMin">
-                <p>Max</p>
-                <p>25%</p>
+                  <p>Flag over 20%</p>
                 </div>
               </div>
                <div className="overlayInner">
-            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
+            <p className="descrip-def innerDef">Charities must be efficient fundraisers, spending less to raise more. We calculate this ratio by determining how much it spends to generate £1 in voluntary income.</p>
             </div>
             </div>
           </div>
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Efficiency And Capacity Ratio</span>
+            <span>Capacity Ratio</span>
             <div className="progressBar">
               <CircularProgressbar
                 strokeWidth="13"
@@ -101,34 +91,34 @@ const Kpis = (props) => {
             <div className="minMax">
                 <div className="innerMaxMin">
                   <p>Min</p>
-                  <p>10%</p>
+                  <p>10.0%</p>
                 </div>
                 <div className="innerMaxMin">
                 <p>Max</p>
-                <p>25%</p>
+                <p>-10.0%</p>
                 </div>
               </div>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">ChariZone would like to see this ratio below 25%</p>
+            <p className="descrip-def innerDef">Effective charities must continuously develop their strategy, invest in their infrastructure and attract talent. However, these administrative expenses remain reasonable and in line with its charitable mission.</p>
             </div>
           </div>
           <div className="kpi--item ">
-          <div className="lastItem">
-            <span>Current Ratio</span>
-            <span>{`${Currr}`.substr(0, 5)}</span>
-            </div>
+         
+           <span>Working Captial Ratio</span>
+            {/* placeholder. Needs to be integrated into the database */}
+           
             <div className="minMax">
                 <div className="innerMaxMin">
                   <p>Min</p>
-                  <p>10%</p>
+                  <p>2</p>
                 </div>
                 <div className="innerMaxMin">
                 <p>Max</p>
-                <p>25%</p>
+                <p>10</p>
                 </div>
               </div>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">plaaaace holder</p>
+            <p className="descrip-def innerDef">Does this charity have enough to survive a rainy day?</p>
             </div>
           </div>
         </div>
@@ -141,19 +131,42 @@ const Kpis = (props) => {
                 percentage={donerDependency.replace('%', '')}
                 text={donerDependency}
               />
+              </div>
               <div className="minMax">
                 <div className="innerMaxMin">
                   <p>Min</p>
-                  <p>10%</p>
+                  <p>78%</p>
                 </div>
                 <div className="innerMaxMin">
                 <p>Max</p>
-                <p>25%</p>
+                <p>95%</p>
                 </div>
               </div>
                <div className="overlayInner">
-               <p className="descrip-def innerDef">How dependent the charity is on your donation vs other forms on income. </p>
+               <p className="descrip-def innerDef">We would like to know how dependent the charity is on your donation vs other forms of income. This clearly depends on the type of charity we are considering. </p>
             </div>
+            </div>
+          <div className="kpi--item">
+            <span>Balanced Budget</span>
+            <div className="progressBar">
+              <CircularProgressbar
+                strokeWidth="13"
+                percentage={donerDependency.replace('%', '')}
+                text={donerDependency}
+              />
+              </div>
+              <div className="minMax">
+                <div className="innerMaxMin">
+                  <p>Min</p>
+                  <p>-20%</p>
+                </div>
+                <div className="innerMaxMin">
+                <p>Max</p>
+                <p>20%</p>
+                </div>
+              </div>
+               <div className="overlayInner">
+               <p className="descrip-def innerDef"> A balanced budget is a budget in which revenues are equal to expenditures. We  look at the 3year average to allow for cyclical changed.  </p>
             </div>
           </div>
         </div>
