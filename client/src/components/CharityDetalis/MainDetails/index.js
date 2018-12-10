@@ -3,7 +3,11 @@ import React from 'react';
 import './style.css';
 
 const MainDetails = props => {
-  const { objective, who, what, how, website } = props;
+  let { objective, who, what, how, website } = props;
+  if (!new RegExp(/(^http:\/\/)|(^https:\/\/)/).test(website)) {
+    website = `http://${website}`;
+  }
+
   return (
     <div className="mainDetails">
       <table>
@@ -22,7 +26,7 @@ const MainDetails = props => {
             </td>
             <td className="header--items">
               <span>
-                <a href={`http://${website}`}>{website}</a>
+                <a href={website}>{website}</a>
               </span>
             </td>
           </tr>
