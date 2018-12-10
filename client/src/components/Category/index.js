@@ -151,11 +151,9 @@ class Category extends Component {
                         charity => charity.charityId
                       );
                       const dataActive = data.map(charity => {
-                        if (charityListId.includes(charity.idChirty)) {
-                          charity.isActive = true;
-                        } else {
-                          charity.isActive = false;
-                        }
+                        charity.isActive = charityListId.includes(
+                          charity.idChirty
+                        );
                         return charity;
                       });
                       return dataActive.slice(0, 5).map(item => {
@@ -222,11 +220,9 @@ class Category extends Component {
                           charity => charity.charityId
                         );
                         const dataActive = data.map(charity => {
-                          if (charityListId.includes(charity.idChirty)) {
-                            charity.isActive = true;
-                          } else {
-                            charity.isActive = false;
-                          }
+                          charity.isActive = charityListId.includes(
+                            charity.idChirty
+                          );
                           return charity;
                         });
 
