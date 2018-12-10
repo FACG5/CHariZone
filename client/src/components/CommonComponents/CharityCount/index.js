@@ -22,7 +22,7 @@ const CharityCount = () => (
             <Link to={count > 1 && str}>
               <img
                 className="img-charity"
-                src="http://www7.0zz0.com/2018/12/05/10/361893112.png"
+                src="./image/icon.png"
                 alt="img charity"
               />
               <div className="count">
