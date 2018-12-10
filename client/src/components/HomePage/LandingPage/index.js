@@ -86,7 +86,11 @@ class LandingPage extends Component {
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress}
                   />
-                  <Link to={`/search?keyword=${keyword}`}>
+                  <Link
+                    to={
+                      keyword.trim() !== '' ? `/search?keyword=${keyword}` : '#'
+                    }
+                  >
                     <button type="button">
                       <i className="fa fa-search" />
                     </button>

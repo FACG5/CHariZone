@@ -1,15 +1,17 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './index.css';
+import { Link } from 'react-router-dom';
+import { LevelBar0, LevelBar1, LevelBar2, LevelBar3 } from '../../LevelBar';
 
 const returnFlag = flag => {
   if (flag === '1') {
-    return <img className="flagImg" src="https://imgur.com/GmAnTas.png" />;
+    return <LevelBar0 />;
   }
   if (flag === '0') {
-    return <img className="flagImg" src="https://imgur.com/cO7uPgA.png" />;
+    return <LevelBar1 />;
   }
-  return <img className="flagImg" src="https://imgur.com/JrMn3j9.png" />;
+  return <LevelBar3 />;
 };
 
 const Governance = props => {
@@ -20,36 +22,92 @@ const Governance = props => {
         <div className="table-column">
           <div className="table-cell">
             <h5 className="tooltip">
-              T:NO
+              Number of Trustees
               <span className="tooltiptext">
-                NUMBER OF TRUSTEES recommend under 15 trustees and over 2
-                trustees
+                According to the Charity Governance code, a board of trustees of
+                at least 5 but no more than 12 is typically good practice.
               </span>
             </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>T:Bio</h5>
+            <h5>Trustees Biography</h5>
           </div>
           <div className="table-cell">
-            <h5>T:ToB</h5>
+            <h5 className="tooltip">
+              Term on Board
+              <span className="tooltiptext">
+                With this , we look if the charity has a policy for how long the
+                trustees serve on board. This ensures a regular process of
+                assessing the skills, ability and experience of board members
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>EC</h5>
+            <h5>ECR</h5>
           </div>
           <div className="table-cell">
-            <h5>P:GDPR</h5>
+            <h5 className="tooltip">
+              Compliance with GDPR
+              <span className="tooltiptext">
+                General Data Protection Regulation cites tougher rules around
+                the handling of personal information. We would like to see
+                enforceability and disclosure of this legislation on both the
+                website and the annual report of the charity.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>P:W</h5>
+            <h5 className="tooltip">
+              Whistleblowing
+              <span className="tooltiptext">
+                A charity should be a safe and trusted environment. Any person
+                is able to complain about a charity to the Police, Fundraising
+                Regulator and the Charity Commission.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>P:H&S</h5>
+            <h5 className="tooltip">
+              Health & Safety
+              <span className="tooltiptext">
+                GAll charities must have a health and safety policy. We are keen
+                to see charities open about disclosign their policy emphasising
+                the importance of looking after their employees and volunteers.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>P:SG</h5>
+            <h5 className="tooltip">
+              Saveguarding policy
+              <span className="tooltiptext">
+                Safeguarding should be a key governance priority for all
+                charities, regardless of size, type or income, not just those
+                working with groups traditionally considered at risk. Charities
+                must put safeguards in place to protect those who come into
+                contact with your charity. We would like to see emphasis and
+                disclosure of this key policy on the website and the annual
+                report of the charity.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
-            <h5>P: FP</h5>
+            <h5 className="tooltip">
+              Fundraising Promise
+              <span className="tooltiptext">
+                Outlines our commitment to donors and the general public Those
+                who register with the Fundraising Regulator agree to ensure
+                their fundraising is legal, open, honest and respectful. The
+                standards for fundraising are set out in the Code of Fundraising
+                Practice.
+              </span>
+            </h5>
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
         </div>
       </div>
@@ -62,6 +120,12 @@ const Governance = props => {
                 <h3>{name}</h3>
               </div>
             );
+          })}
+        </div>
+        <div className="cLogo-div">
+          {arrayOfCharity.map(charity => {
+            const { img } = charity;
+            return <img className="charity-logo" src={img[0].url} />;
           })}
         </div>
         <div className="columns-div">
@@ -99,6 +163,13 @@ const Governance = props => {
               </div>
             );
           })}
+        </div>
+        <div className="donate-buttons">
+          {arrayOfCharity.map(() => (
+            <Link to="/under-construction" className="donate-b">
+              donate
+            </Link>
+          ))}
         </div>
       </div>
     </div>
