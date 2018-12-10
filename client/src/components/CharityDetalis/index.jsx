@@ -163,10 +163,11 @@ class CharityDetalis extends Component {
         />
       );
     }
-    const { objective, who, what, how } = this.state.charity;
+    const { objective, who, what, how, website } = this.state.charity;
     return (
       <MainDetails
         objective={objective.toLowerCase()}
+        website={website}
         who={who.map(x => x.toLowerCase())}
         how={what.map(x => x.toLowerCase())}
         what={how.map(x => x.toLowerCase())}
@@ -205,7 +206,6 @@ class CharityDetalis extends Component {
       charity: { name, charityNumber, img },
       charityCountrefresh,
     } = this.state;
-    const { history } = this.props;
     const Contant = this.renderTab(tabs);
     if (found) {
       return <h1 style={{ margin: '160px' }}>No charity Found</h1>;
@@ -214,7 +214,6 @@ class CharityDetalis extends Component {
       <>
         <div style={{ margin: '110px auto', width: '80%' }}>
           <CharityHeader
-            history={history}
             img={img}
             charityNumber={charityNumber}
             ChangeCompare={this.refreshCount}

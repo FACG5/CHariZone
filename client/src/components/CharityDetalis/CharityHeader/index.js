@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './style.css';
 import { CountContext } from '../../Context/CountContext';
 
@@ -74,4 +75,4 @@ const CharityHeader = props => {
   );
 };
 
-export default CharityHeader;
+export default withRouter(CharityHeader);

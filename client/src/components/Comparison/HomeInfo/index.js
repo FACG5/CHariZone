@@ -4,7 +4,7 @@ import './index.css';
 import { Link } from 'react-router-dom';
 
 const HomeInfo = props => {
-  const { arrayOfCharity } = props;
+  const { arrayOfCharity, history } = props;
   return (
     <div className="compare-div">
       <div className="column-div">
@@ -32,10 +32,16 @@ const HomeInfo = props => {
       <div className="content-div">
         <div className="cname-div">
           {arrayOfCharity.map(charity => {
-            const { name } = charity;
+            const { name, regno } = charity;
             return (
               <div className="name-column">
-                <h3>{name}</h3>
+                <h3
+                  onClick={() => {
+                    history.push('/charity/' + regno);
+                  }}
+                >
+                  {name}
+                </h3>
               </div>
             );
           })}
