@@ -177,14 +177,14 @@ const Kpis = (props) => {
         <div className="kpi--column">
           <div className="kpi--item">
             <span>Number Of Trustees</span>
-            <span>{numberOfTrustees}</span>
+            <span>{returnFlag(numberOfTrustees)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
             </div>
           </div>
           <div className="kpi--item">
             <span>Executive Compensation</span>
-            <span>{executiveCompensation}</span>
+            <span>{returnFlag(executiveCompensation)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
             </div>
@@ -200,7 +200,7 @@ const Kpis = (props) => {
         <div className="kpi--column">
           <div className="kpi--item">
             <span>Trustees Biography  </span>
-            <span>{trusteesBiography}</span>
+            <span>{returnFlag(trusteesBiography)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
             </div>
@@ -249,28 +249,28 @@ const Kpis = (props) => {
       <div className="kpi--row">
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Impact Reporting</span>
+            <span>Impact</span>
             <span>{returnFlag(impactReporting)}</span>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">Evidence of charity's activities and results  meeting its long term ambitions.</p>
+            <p className="descrip-def innerDef">We would like to see  evidence of charity's activities and results  meeting its long term ambitions.</p>
             </div>
           </div>
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Impact: Results Reporting </span>
+            <span>Results</span>
             <span>{returnFlag(impactResults)}</span>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">Evidence of charity's activities and results  meeting its long term ambitions.</p>
+            <p className="descrip-def innerDef">We look for Results focused culture . evidence on the website and annual of clear and comprehensive evidence of positive results . And openness in sharing results with the public</p>
             </div>
           </div>
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Mention Of Theory</span>
+            <span>Measurement Framework</span>
             <span>{returnFlag(mentionOfTheory)}</span>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">Evidence of charity's activities and results  meeting its long term ambitions.</p>
+            <p className="descrip-def innerDef">Is the charity giving us a better understanding of how they link the results with impact. </p>
             </div>
           </div>
         </div>
