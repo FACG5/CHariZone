@@ -33,7 +33,7 @@ class Slide extends React.Component {
         title: 'Overseas Aid and Relief',
       },
       {
-        link: 'https://imgur.com/KwTbAWP.png',
+        link: 'https://www.va.gov/HOMELESS/images/accomplishments-icons_communities.png',
         title: 'Homelessness',
       },
       {
@@ -45,7 +45,7 @@ class Slide extends React.Component {
         title: 'Animals',
       },
       {
-        link: 'https://imgur.com/n10hQDa.png',
+        link: 'http://sustainability.standardbank.com/image/environmental_blue_icon.png',
         title: 'Environment',
       },
     ];
