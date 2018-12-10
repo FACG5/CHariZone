@@ -55,3 +55,14 @@
 .tabs .active {
   background: #0067bb !important;
 }
+
+.div-tow-button-cd {
+  display: inline;
+  margin-left: 10px;
+}
+
+.div-tow-button-cd button {
+  width: 8%;
+  margin-left: 10px;
+  height: 40px;
+}
