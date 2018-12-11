@@ -3,15 +3,21 @@ import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 import { LevelBar0, LevelBar1, LevelBar2, LevelBar3 } from '../../LevelBar';
+import {
+  CircularLevel0,
+  CircularLevel50,
+  CircularLevel100,
+} from '../../CircularLevel';
+
 
 const returnFlag = flag => {
   if (flag === '1') {
-    return <LevelBar0 />;
+    return <CircularLevel100 />;
   }
   if (flag === '0') {
-    return <LevelBar1 />;
+    return <CircularLevel50 />;
   }
-  return <LevelBar3 />;
+  return <CircularLevel0 />;
 };
 
 const Governance = props => {
