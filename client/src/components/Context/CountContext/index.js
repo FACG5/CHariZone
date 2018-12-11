@@ -6,19 +6,29 @@ export const CountContext = React.createContext();
 class CountProvider extends Component {
   state = {
     charityList: [],
+    animation: false,
+  };
+
+  animationEnd = () => {
+    this.setState(prv => ({
+      animation: !prv.animation,
+    }));
   };
 
   changeActive = (charityId, name) => {
     const { charityList } = this.state;
+    let obj = {};
     const charitylistResult = charityList.filter(
       charity => charity.charityId !== charityId
     );
     if (charitylistResult.length === charityList.length) {
       charitylistResult.push({ charityId, name });
+      obj = { animation: true };
     }
     const count = charitylistResult.length;
     if (count <= 3) {
       this.setState({
+        ...obj,
         charityList: charitylistResult,
       });
     }
@@ -42,6 +52,7 @@ class CountProvider extends Component {
           ...this.state,
           changeActive: this.changeActive,
           removeCharity: this.removeCharity,
+          animationEnd: this.animationEnd,
         }}
       >
         {children}

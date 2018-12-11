@@ -16,8 +16,6 @@ class HomePage extends Component {
         <LandingPage history={history} />
         <Works />
         <Slide />
-        
-        
         <ContactUs />
         <Footer />
       </>

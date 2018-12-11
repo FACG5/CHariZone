@@ -46,10 +46,11 @@
   color: #fff;
   margin: 5px 3px;
   letter-spacing: 1px;
-  padding: 1px 6px;
-  border: 0px;
+  padding: 10px 12px;
+  border-radius: 6px 6px 0 0;
   font-size: 20px;
-  border-radius: 6px;
+  outline: none;
+  border: none;
 }
 
 .tabs .active {
