@@ -41,8 +41,7 @@ const Financial = props => {
               <span className="tooltiptext">
                 Charities that spend more year over year on their programs and
                 services have a greater impact on their charitable missions.
-                This ratio indicates the charity's capacity to receive new
-                donation and use it promptly.
+                This ratio indicates the charity's capacity to receive new donation and use it promptly.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
