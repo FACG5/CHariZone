@@ -76,12 +76,10 @@ class LandingPage extends Component {
                       <span style={spanStyle}>ZONE</span>
                     </p>
                   </div>
-                  
                   <div className="subLogo">
                     <p>Search, compare and donate</p>
                   </div>
                 </div>
-               
                 <div className="search">
                   <input
                     placeholder="By Keyword, Name"
