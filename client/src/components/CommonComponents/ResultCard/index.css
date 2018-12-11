@@ -25,7 +25,8 @@
 }
 
 .div--card-result .div--name-des h2 {
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: .3rem;
     color: #0067bb;
 }
 
