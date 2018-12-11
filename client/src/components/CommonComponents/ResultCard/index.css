@@ -109,7 +109,7 @@
     margin-top: 25px;
 }
 
-.div--card-result .div--two-button button {
+.button-compare-donate {
     height: 30%;
     width: 60%;
     margin: 5% auto;
@@ -128,18 +128,18 @@
     font-weight: bold;
 }
 
-.div--card-result .div--two-button button span {
+.button-compare-donate span {
     font-size: 20px;
 }
 
-.div--card-result .div--two-button button:hover {
+.button-compare-donate:hover {
     background-color: #fff;
     color: #0067bb;
     border: 1px solid #0067bb;
     border-radius: 5%;
 }
 
-.div--card-result .div--two-button .active {
+.active {
     background-color: #fff;
     color: #0067bb;
     border: 1px solid #0067bb;
