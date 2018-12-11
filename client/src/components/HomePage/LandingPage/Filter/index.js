@@ -146,7 +146,7 @@ class Filter extends Component {
                     disabled={!income ? 'disabled' : ''}
                   >
                     <option key="0" from="0" to="0">
-                      Select catgery:
+                      Select range:
                     </option>
                     {incomeList.map(item => (
                       <option
