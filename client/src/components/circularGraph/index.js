@@ -12,7 +12,7 @@ const CircularLevel0 = () => (
       styles={{
         root: { width: '80px' },
         path: {
-          stroke: `rgba(49, 90, 181, ${11.3})`,
+          stroke: '#3B8ECA',
         },
         text: {
           fill: '#3B8ECA',
@@ -37,7 +37,7 @@ const CircularLevel50 = () => (
       styles={{
         root: { width: '80px' },
         path: {
-          stroke: `rgba(49, 90, 181, ${11.3})`,
+          stroke: '#3B8ECA',
         },
         text: {
           fill: '#3B8ECA',
@@ -61,7 +61,7 @@ const CircularLevel100 = () => (
       styles={{
         root: { width: '80px' },
         path: {
-          stroke: `rgba(49, 90, 181, ${11.3})`,
+          stroke: '#3B8ECA',
         },
         text: {
           fill: '#3B8ECA',
