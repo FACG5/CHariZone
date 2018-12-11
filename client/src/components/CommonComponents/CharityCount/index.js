@@ -11,13 +11,16 @@ import './style.css';
 const CharityCount = () => (
   <CountContext.Consumer>
     {props => {
-      const { charityList, removeCharity } = props;
+      const { charityList, removeCharity, animation, animationEnd } = props;
       const count = charityList.length;
       const str = `/compare?${charityList
         .map((charity, i) => `charity${i + 1}=${charity.charityId}`)
         .join('&')}`;
       return (
-        <div className="count-charity">
+        <div
+          onAnimationEnd={() => animationEnd()}
+          className={`count-charity ${animation ? 'fade' : ''}`}
+        >
           <div className="tooltip">
             <Link to={count > 1 && str}>
               <img
