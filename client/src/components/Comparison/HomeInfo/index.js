@@ -17,15 +17,12 @@ const HomeInfo = props => {
           </div>
           <div className="table-cell">
             <h5>Overall Financial:</h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5>Overall Governance:</h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
           <div className="table-cell">
             <h5>Overall Impact:</h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
           </div>
         </div>
       </div>
@@ -54,7 +51,9 @@ const HomeInfo = props => {
         </div>
         <div className="columns-div">
           {arrayOfCharity.map(charity => {
-            const { latest_fye: latestFye, income, expend } = charity;
+            const { latest_fye: latestFye, income, expend,Financial,Governance,Impact
+
+ } = charity;
             console.log(charity);
             return (
               <div className="charity-column">
@@ -64,13 +63,13 @@ const HomeInfo = props => {
                 <div className="column-cell">{income}</div>
                 <div className="column-cell">{expend}</div>
                 <div className="column-cell">
-                  2<span>/6</span>
+                  {Financial}<span>/6</span>
                 </div>
                 <div className="column-cell">
-                  3<span>/8</span>
+                  {Governance}<span>/8</span>
                 </div>
                 <div className="column-cell">
-                  1<span>/3</span>
+                  {Impact}<span>/3</span>
                 </div>
               </div>
             );
