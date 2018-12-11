@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import './index.css';
 import {
@@ -20,7 +20,7 @@ const returnFlag = flag => {
 };
 
 const Impact = props => {
-  const { arrayOfCharity } = props;
+  const { history, arrayOfCharity } = props;
   return (
     <div className="compare-div">
       <div className="column-div">
@@ -34,7 +34,7 @@ const Impact = props => {
                 results . And openness in sharing results with the public
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -44,7 +44,7 @@ const Impact = props => {
                 results meeting its long term ambitions.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -54,17 +54,23 @@ const Impact = props => {
                 the results with impact.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
         </div>
       </div>
       <div className="content-div">
         <div className="cname-div">
           {arrayOfCharity.map(charity => {
-            const { name } = charity;
+            const { name, regno } = charity;
             return (
               <div className="name-column">
-                <h3>{name}</h3>
+                <h3
+                  onClick={() => {
+                    history.push(`/charity/${regno}`);
+                  }}
+                >
+                  {name}
+                </h3>
               </div>
             );
           })}
@@ -72,7 +78,7 @@ const Impact = props => {
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
             const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} />;
+            return <img className="charity-logo" src={img[0].url} alt="img" />;
           })}
         </div>
         <div className="columns-div">
@@ -111,4 +117,4 @@ const Impact = props => {
   );
 };
 
-export default Impact;
+export default withRouter(Impact);

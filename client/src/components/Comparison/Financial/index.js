@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import CircularProgressbar from 'react-circular-progressbar';
 import React from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import './index.css';
-import { Link } from 'react-router-dom';
 
 const splitPercentage = x => x.split('%')[0];
 
 const Financial = props => {
-  const { arrayOfCharity } = props;
+  const { arrayOfCharity, history } = props;
   return (
     <div className="compare-div">
       <div className="column-div">
@@ -22,7 +22,7 @@ const Financial = props => {
                 its charitable mission.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -33,7 +33,7 @@ const Financial = props => {
                 much it spends to generate £1 in voluntary income.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -45,35 +45,42 @@ const Financial = props => {
                 donation and use it promptly.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
-            Donor dependency
-  <span className="tooltiptext">
-Defintion :We would like to know how dependent the charity is on your donation vs other forms of income. This clearly depends on the type of charity we are considering.
-      </span>
+              Donor dependency
+              <span className="tooltiptext">
+                Defintion :We would like to know how dependent the charity is on
+                your donation vs other forms of income. This clearly depends on
+                the type of charity we are considering.
+              </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
               Working Captial Ratio
               <span className="tooltiptext">
-              Does thee charity have enough to survive a rainy day?
-              </span>
+              Does thee charity have enough to survive a rainy day?              </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
         </div>
       </div>
       <div className="content-div">
         <div className="cname-div">
           {arrayOfCharity.map(charity => {
-            const { name } = charity;
+            const { name, regno } = charity;
             return (
               <div className="name-column">
-                <h3>{name}</h3>
+                <h3
+                  onClick={() => {
+                    history.push(`/charity/${  regno}`);
+                  }}
+                >
+                  {name}
+                </h3>
               </div>
             );
           })}
@@ -81,7 +88,7 @@ Defintion :We would like to know how dependent the charity is on your donation v
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
             const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} />;
+            return <img className="charity-logo" src={img[0].url} alt="img" />;
           })}
         </div>
         <div className="columns-div">
@@ -205,4 +212,4 @@ Defintion :We would like to know how dependent the charity is on your donation v
   );
 };
 
-export default Financial;
+export default withRouter(Financial);
