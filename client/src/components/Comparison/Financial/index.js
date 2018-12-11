@@ -60,7 +60,7 @@ Defintion :We would like to know how dependent the charity is on your donation v
             <h5 className="tooltip">
               Working Captial Ratio
               <span className="tooltiptext">
-              Does thee charity have enough to survive a rainy day? 
+              Does thee charity have enough to survive a rainy day?
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" />
@@ -165,7 +165,26 @@ Defintion :We would like to know how dependent the charity is on your donation v
                   />
                 </div>
                 <div className="column-cell">
-                  <span>{donerDependency}</span>
+                  <CircularProgressbar
+                    viewBox="0 0 164 180"
+                         percentage={donerDependency.replace('%', '')}
+                    backgroundPadding={20}
+                    text={`${donerDependency}`}
+                    styles={{
+                      root: { width: '40px' },
+                      path: {
+                        stroke: `rgba(49, 90, 181, ${11.3})`,
+                      },
+                      text: {
+                        fill: '#315AB5',
+                        fontSize: '30px',
+                        dominantBaseline: 'middle',
+                        textAnchor: 'middle',
+                        fontWeight: '700',
+                      },
+                      trail: { stroke: '#ccc' },
+                    }}
+                  />
                 </div>
                 <div className="column-cell">
                   <span>{`${Currr}`.substr(0, 5)}</span>
