@@ -111,7 +111,7 @@ const Kpis = (props) => {
          
            <span>Working Captial Ratio</span>
             {/* placeholder. Needs to be integrated into the database */}
-           
+           <span>{`${Currr}`.slice(0,5)}</span>
             <div className="minMax">
                 <div className="innerMaxMin">
                   <p>Min</p>
@@ -218,7 +218,7 @@ const Kpis = (props) => {
         <div className="kpi--column">
           <div className="kpi--item">
             <span>Health & Safety Policy</span>
-            <span>{returnFlag(tob)}</span>
+            <span>{returnFlag(policyHealth)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef">All charities must have a health and safety policy. We are keen to see charities open about disclosign their policy emphasising the importance of looking after their employees and volunteers. </p>
             </div>
