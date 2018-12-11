@@ -10,16 +10,16 @@ const CircularLevel0 = () => (
       backgroundPadding={20}
       text="Unhealty"
       styles={{
-        root: { width: '50px' },
+        root: { width: '45px' },
         path: {
           stroke: `rgba(49, 90, 181, ${11.3})`,
         },
         text: {
           fill: '#315AB5',
-          fontSize: '22px',
+          fontSize: '20px',
           dominantBaseline: 'middle',
           textAnchor: 'middle',
-          fontWeight: '300',
+          fontWeight: '500',
         },
         trail: { stroke: '#ccc' },
       }}
@@ -35,16 +35,16 @@ const CircularLevel50 = () => (
       backgroundPadding={20}
       text="Neutral"
       styles={{
-        root: { width: '50px' },
+        root: { width: '45px' },
         path: {
           stroke: `rgba(49, 90, 181, ${11.3})`,
         },
         text: {
           fill: '#315AB5',
-          fontSize: '22px',
+          fontSize: '20px',
           dominantBaseline: 'middle',
           textAnchor: 'middle',
-          fontWeight: '300',
+          fontWeight: '500',
         },
         trail: { stroke: '#ccc' },
       }}
@@ -59,16 +59,16 @@ const CircularLevel100 = () => (
       backgroundPadding={20}
       text="Healthy"
       styles={{
-        root: { width: '50px' },
+        root: { width: '45px' },
         path: {
           stroke: `rgba(49, 90, 181, ${11.3})`,
         },
         text: {
           fill: '#315AB5',
-          fontSize: '22px',
+          fontSize: '20px',
           dominantBaseline: 'middle',
           textAnchor: 'middle',
-          fontWeight: '300',
+          fontWeight: '500',
         },
         trail: { stroke: '#ccc' },
       }}
