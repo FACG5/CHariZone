@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import './index.css';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { LevelBar0, LevelBar1, LevelBar2, LevelBar3 } from '../../LevelBar';
 
 const returnFlag = flag => {
@@ -15,7 +15,7 @@ const returnFlag = flag => {
 };
 
 const Governance = props => {
-  const { arrayOfCharity } = props;
+  const { history, arrayOfCharity } = props;
   return (
     <div className="compare-div">
       <div className="column-div">
@@ -28,7 +28,7 @@ const Governance = props => {
                 at least 5 but no more than 12 is typically good practice.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5>Trustees Biography</h5>
@@ -42,7 +42,7 @@ const Governance = props => {
                 assessing the skills, ability and experience of board members
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5>ECR</h5>
@@ -57,7 +57,7 @@ const Governance = props => {
                 website and the annual report of the charity.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -68,7 +68,7 @@ const Governance = props => {
                 Regulator and the Charity Commission.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -79,7 +79,7 @@ const Governance = props => {
                 the importance of looking after their employees and volunteers.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -94,7 +94,7 @@ const Governance = props => {
                 report of the charity.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -107,17 +107,23 @@ const Governance = props => {
                 Practice.
               </span>
             </h5>
-            <img src="https://i.ibb.co/ZVPLVtB/information.png" />
+            <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
         </div>
       </div>
       <div className="content-div">
         <div className="cname-div">
           {arrayOfCharity.map(charity => {
-            const { name } = charity;
+            const { name, regno } = charity;
             return (
               <div className="name-column">
-                <h3>{name}</h3>
+                <h3
+                  onClick={() => {
+                    history.push(`/charity/${  regno}`);
+                  }}
+                >
+                  {name}
+                </h3>
               </div>
             );
           })}
@@ -125,7 +131,7 @@ const Governance = props => {
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
             const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} />;
+            return <img className="charity-logo" src={img[0].url} alt="img" />;
           })}
         </div>
         <div className="columns-div">
@@ -175,4 +181,4 @@ const Governance = props => {
     </div>
   );
 };
-export default Governance;
+export default withRouter(Governance);
