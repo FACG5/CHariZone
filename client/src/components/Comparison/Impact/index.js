@@ -11,18 +11,12 @@ import {
 
 const returnFlag = flag => {
   if (flag === '1') {
-    return (
-      <img className="flagImg" src="https://imgur.com/GmAnTas.png" alt="img" />
-    );
+    return <CircularLevel100 />;
   }
   if (flag === '0') {
-    return (
-      <img className="flagImg" src="https://imgur.com/cO7uPgA.png" alt="img" />
-    );
+    return <CircularLevel50 />;
   }
-  return (
-    <img className="flagImg" src="https://imgur.com/JrMn3j9.png" alt="img" />
-  );
+  return <CircularLevel0 />;
 };
 
 const Impact = props => {
@@ -98,22 +92,13 @@ const Impact = props => {
                 return (
                   <div className="charity-column">
                     <div className="column-cell">
-                      <CircularLevel0 />
-                      {
-                        // {returnFlag(impactResults)}
-                      }
+                      {returnFlag(impactResults)}
                     </div>
                     <div className="column-cell">
-                      <CircularLevel50 />
-                      {
-                        // {returnFlag(impactReporting)}
-                      }
+                      {returnFlag(impactReporting)}
                     </div>
                     <div className="column-cell">
-                      <CircularLevel100 />
-                      {
-                        // {returnFlag(mentionOfTheory)}
-                      }
+                      {returnFlag(mentionOfTheory)}
                     </div>
                   </div>
                 );
