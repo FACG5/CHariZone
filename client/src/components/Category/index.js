@@ -13,13 +13,14 @@ import Header from '../Header';
 import Footer from '../HomePage/Footer';
 import ResultCard from '../CommonComponents/ResultCard';
 import { CountContext } from '../Context/CountContext';
+import CategoryDetailsData from '../CategoryDetailsData';
 
 class Category extends Component {
   state = {
+    details: {},
     data: [],
     activeMore: false,
     isData: false,
-    // refresh: false,
   };
 
   componentWillMount = () => {
@@ -68,21 +69,11 @@ class Category extends Component {
           return object;
         });
 
-        const detales = [
-          {
-            id: 1,
-            title: category,
-            background:
-              'https://t4.ftcdn.net/jpg/01/66/07/21/500_F_166072192_CCSQGkwDcjHm2IEK8u2DYBjE5IyEG5NI.jpg',
-            text: `Lorem ipsum dolor sit amet, donec augue porta ultricies magna,
-              mus habitant amet sollicitudin, ad ante diam sed etiam tristique,
-              pellentesque erat. Dui enim vel ac posuere sit eros. Mus et viverra quisque,
-              maiores aliquet fusce pellentesque feugiat, ac sed, gravida est magna. Non quis,`,
-          },
-        ];
+        const details = CategoryDetailsData.find(x => x.name.includes(str));
+        console.log('details', details);
 
         this.setState({
-          detales,
+          details,
           data: array,
           isData: true,
         });
@@ -121,7 +112,7 @@ class Category extends Component {
   specificٍSize = array => array.length > 3;
 
   render() {
-    const { data, activeMore, isData, refresh, detales } = this.state;
+    const { data, activeMore, isData, refresh, details } = this.state;
     return (
       <React.Fragment>
         <Header />
@@ -139,7 +130,7 @@ class Category extends Component {
             <>
               <HeaderCategory
                 numberOfResult={data.length}
-                name={detales[0].title}
+                name={details.name}
               />
               <CharityCount refresh={refresh} />
               <div className="container">
@@ -268,14 +259,7 @@ class Category extends Component {
                   )}
                 </div>
                 <div className="category-details">
-                  <CategoryDetails
-                    id={detales.length === 0 ? '' : detales[0].id}
-                    title={detales.length === 0 ? '' : detales[0].title}
-                    text={detales.length === 0 ? '' : detales[0].text}
-                    background={
-                      detales.length === 0 ? '' : detales[0].background
-                    }
-                  />
+                  <CategoryDetails details={details} />
                 </div>
               </div>
             </>
