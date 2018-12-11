@@ -7,16 +7,21 @@ import CircularProgressbar from 'react-circular-progressbar';
 import BoxKpi from '../BoxKpi';
 import './style.css';
 
+import {
+  CircularLevel0,
+  CircularLevel50,
+  CircularLevel100,
+} from '../../circularGraph';
+
 const returnFlag = flag => {
   if (flag === '1') {
-    return <img className="flagImg" src="https://imgur.com/GmAnTas.png" />
-  } if (flag === '0') {
-    return <img className="flagImg" src="https://imgur.com/cO7uPgA.png" />
-  } if (flag === '-1') {
-    return <img className="flagImg" src="https://imgur.com/JrMn3j9.png" />
+    return <CircularLevel100 />; 
   }
-  return <span>-</span>
-}
+  if (flag === '0') {
+    return <CircularLevel50 />;
+  }
+  return <CircularLevel0 />;
+};
 
 const Kpis = (props) => {
 
@@ -167,7 +172,7 @@ const Kpis = (props) => {
               </div>
                <div className="overlayInner">
                <p className="descrip-def innerDef"> A balanced budget is a budget in which revenues are equal to expenditures. We  look at the 3year average to allow for cyclical changed.  </p>
-            </div>
+            </div>GDPR
           </div>
         </div>
       </div>
@@ -183,30 +188,20 @@ const Kpis = (props) => {
             </div>
           </div>
           <div className="kpi--item">
-            <span>Executive Compensation</span>
-            <span>{returnFlag(executiveCompensation)}</span>
-            <div className="overlayInner">
-            <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
-            </div>
-          </div>
-          <div className="kpi--item">
-            <span>Policy: Health & Safety</span>
-            <span>{returnFlag(policyHealth)}</span>
-            <div className="overlayInner">
-            <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
-            </div>
+            <span>Trustees Biography</span>
+            <span>{returnFlag(trusteesBiography)}</span>
           </div>
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Trustees Biography  </span>
-            <span>{returnFlag(trusteesBiography)}</span>
+            <span>Term on Board</span>
+            <span>{returnFlag(tob)}</span>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">According to the Charity Governance code, a board of trustees of at least 5 but no more than 12 is typically good practice. </p>
+            <p className="descrip-def innerDef">With this , we look if the charity has a policy for how long the trustees serve on board.  This ensures a regular process of assessing the skills, ability and experience of board members</p>
             </div>
           </div>
           <div className="kpi--item">
-            <span>Policy:General Data Protection Regulations</span>
+            <span>Compliance with GDPR</span>
             <span>{returnFlag(policyGeneral)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef">General Data Protection Regulation cites tougher rules around the handling of personal information.  We would like to see enforceability and disclosure of this legislation on both the website and the annual report of the charity. </p>
@@ -222,14 +217,14 @@ const Kpis = (props) => {
         </div>
         <div className="kpi--column">
           <div className="kpi--item">
-            <span>Term on Board</span>
+            <span>Health & Safety Policy</span>
             <span>{returnFlag(tob)}</span>
             <div className="overlayInner">
-            <p className="descrip-def innerDef">With this , we look if the charity has a policy for how long the trustees serve on board.  This ensures a regular process of assessing the skills, ability and experience of board members</p>
+            <p className="descrip-def innerDef">All charities must have a health and safety policy. We are keen to see charities open about disclosign their policy emphasising the importance of looking after their employees and volunteers. </p>
             </div>
           </div>
           <div className="kpi--item">
-            <span>Policy: Whistleblowing</span>
+            <span>Whistleblowing</span>
             <span>{returnFlag(policyWhistleblowing)}</span>
             <div className="overlayInner">
             <p className="descrip-def innerDef"> A charity should be a safe and trusted environment. Any person is able to complain about a charity to the Police, Fundraising Regulator and the Charity Commission.</p>
