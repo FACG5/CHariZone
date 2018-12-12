@@ -68,8 +68,7 @@ class Category extends Component {
           object.isActive = false;
           return object;
         });
-
-        const details = CategoryDetailsData.find(x => x.name === str);
+        const details = CategoryDetailsData.find(x => x.name === category);
         this.setState({
           details,
           data: array,
