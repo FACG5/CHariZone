@@ -13,16 +13,15 @@ exports.get = (req, res) => {
     };
   } else if (category === '-1') {
     obj = {
-      filterByFormula: `AND(({income} > ${incfrom}),({income} < ${incto}))`,
+      filterByFormula: `AND(({income} > '${incfrom}'),({income} < '${incto}'))`,
     };
   } else if (incfrom === '-1') {
     obj = {
-      filterByFormula: `(FIND(${category},{What}))`,
+      filterByFormula: `(FIND('${category}',{What}))`,
     };
   } else {
     obj = {
-      filterByFormula: `AND(({income} > ${incfrom}),({income} < ${incto}))`,
-      filterByFormula: `(FIND(${category},{What}))`,
+      filterByFormula: `AND(({income} > ${incfrom}),({income} < ${incto}),(FIND('${category}',{What})))`,
     };
   }
   airtable(obj, (err, records) => {
