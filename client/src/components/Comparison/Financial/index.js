@@ -48,6 +48,10 @@ const Financial = props => {
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
+            <h5>Balanced Budget:</h5>
+          </div>
+
+          <div className="table-cell">
             <h5 className="tooltip">
               Donor dependency
               <span className="tooltiptext">
@@ -107,6 +111,7 @@ const Financial = props => {
               EMR,
               averageFundraising,
               Ecr,
+              executiveCompensation,
               Currr,
               donerDependency,
             } = charity;
@@ -181,6 +186,7 @@ const Financial = props => {
                     }}
                   />
                 </div>
+                  <div className="column-cell">{executiveCompensation} </div>
                 <div className="column-cell">
                   <CircularProgressbar
                     viewBox="0 0 164 180"

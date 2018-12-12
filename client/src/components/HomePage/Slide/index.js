@@ -72,7 +72,7 @@ class Slide extends React.Component {
   render() {
     const items = this.galleryItems();
     return (
-      <div className="movingSlider">
+      <div id="slide" className="movingSlider">
         <h1 className="mainTitle"> Categories</h1>
         <a name="Slider" title="slider" />
         <AliceCarousel

@@ -50,9 +50,6 @@ const Governance = props => {
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
           <div className="table-cell">
-            <h5>ECR</h5>
-          </div>
-          <div className="table-cell">
             <h5 className="tooltip">
               Compliance with GDPR
               <span className="tooltiptext">
@@ -154,7 +151,6 @@ const Governance = props => {
               numberOfTrustees,
               trusteesBiography,
               tob,
-              executiveCompensation,
               policyGeneral,
               policyWhistleblowing,
               policyHealth,
@@ -170,7 +166,6 @@ const Governance = props => {
                   {returnFlag(trusteesBiography)}
                 </div>
                 <div className="column-cell">{returnFlag(tob)}</div>
-                <div className="column-cell">{executiveCompensation}</div>
                 <div className="column-cell">{returnFlag(policyGeneral)}</div>
                 <div className="column-cell">
                   {returnFlag(policyWhistleblowing)}
