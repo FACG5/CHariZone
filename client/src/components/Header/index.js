@@ -39,6 +39,7 @@ class Header extends Component {
             >
               <div className="hamburger" />
               <div className="items" id="items">
+              <Link to="/">SEARCH</Link>
                 <Link to="/">HOW IT WORKS</Link>
                 <Link to="/">CATEGORIES</Link>
                 <Link to="/">CONTACT US</Link>
