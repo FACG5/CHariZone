@@ -71,7 +71,6 @@ const HomeInfo = props => {
               Governance,
               Impact,
             } = charity;
-            console.log(charity);
             return (
               <div className="charity-column">
                 {
