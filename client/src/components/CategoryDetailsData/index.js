@@ -105,7 +105,7 @@ const CategoryDetailsData = [
     name: 'Education',
     background:
       'https://www.theteam.co.uk/wp-content/uploads/2016/05/mona-foundation-women.jpg',
-    issue: 'Education',
+    issue: 'For the public benefit to promote learning for pleasure by people no longer in full time employment through the continued development of their individual capabilities, competencies, skills and understanding in subjects of educational value.',
     scopeOfWork: null,
 
     activities: null,

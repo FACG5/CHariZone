@@ -52,7 +52,9 @@ class Slide extends React.Component {
 
     return images.map((img, index) => (
       <div>
-        <Link to={`category?category=${images[index].title}`}>
+        <Link
+          to={`category?category=${images[index].title.replace('&', '%26')}`}
+        >
           <img
             style={{ height: '90px', width: '90px' }}
             alt={images[index]}
