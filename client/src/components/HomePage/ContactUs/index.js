@@ -4,11 +4,11 @@ import './index.css';
 
 const ContactUS = () => (
   <React.Fragment>
-    <section className="ending-section">
+    <section id="contactus" className="ending-section">
       <div className="overlayContact">
         <h1 className="titleTitle">CONTACT US</h1>
         <div className="contactInnerContainer">
-        <a name="Contact" title="Contact" />
+          <a name="Contact" title="Contact" />
           <div className="contactUsSection">
             {/* TODO == add client email */}
             <form
