@@ -26,10 +26,9 @@
 .titleTitle{
     margin: 40px auto;
     color: #EFF0F2;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 25px;
-
+    letter-spacing: 1px;
+    font-size: 40px;
+    font-weight: 500;
 }
 .inputFieldContect{
     display: block;
