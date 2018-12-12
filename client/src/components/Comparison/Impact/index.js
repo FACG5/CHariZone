@@ -77,8 +77,17 @@ const Impact = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} alt="img" />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">
