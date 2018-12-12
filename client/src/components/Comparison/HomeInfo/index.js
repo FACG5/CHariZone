@@ -3,6 +3,9 @@ import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 
+const handherNumber = number =>
+  `${number}`.replace(/(?!^)(?=(?:([0-9]){3})+(?:\.|$))/gm, ',');
+
 const HomeInfo = props => {
   const { arrayOfCharity, history } = props;
   return (
@@ -34,7 +37,7 @@ const HomeInfo = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push(`/charity/${  regno}`);
+                    history.push(`/charity/${regno}`);
                   }}
                 >
                   {name}
@@ -74,8 +77,8 @@ const HomeInfo = props => {
                 {
                   // <div className="column-cell">{latestFye}</div>
                 }
-                <div className="column-cell">{income}</div>
-                <div className="column-cell">{expend}</div>
+                <div className="column-cell">{handherNumber(income)} £</div>
+                <div className="column-cell">{handherNumber(expend)} £</div>
                 <div className="column-cell">
                   {Financial}
                   <span>/6</span>
