@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { Component } from 'react';
 import './index.css';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Header extends Component {
   state = {
@@ -19,12 +19,12 @@ class Header extends Component {
     return (
       <div className="header-container">
         <div className="div-logo">
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <span className="span-name">
-            <h1>
-              chari<span className="colored-name">zone</span>
-            </h1>
-          </span>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <span className="span-name">
+              <h1>
+                chari<span className="colored-name">zone</span>
+              </h1>
+            </span>
           </Link>
           <span className="description">
             <h2> all charities in one place</h2>
@@ -39,10 +39,10 @@ class Header extends Component {
             >
               <div className="hamburger" />
               <div className="items" id="items">
-              <Link to="/">SEARCH</Link>
-                <Link to="/">HOW IT WORKS</Link>
-                <Link to="/">CATEGORIES</Link>
-                <Link to="/">CONTACT US</Link>
+                <Link to="/">SEARCH</Link>
+                <Link to="/#howitworks">HOW IT WORKS</Link>
+                <Link to="/#slide">CATEGORIES</Link>
+                <Link to="/#contactus">CONTACT US</Link>
               </div>
             </div>
           </nav>
