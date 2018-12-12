@@ -152,7 +152,14 @@ class Comparison extends Component {
                 </div>
                 {this.renderTab()}
               </div>
-              <TabInformation chickInformation={this.chickInformation()} />
+          {(() => {
+        switch (this.state.tabs) {
+          case 2:   return <TabInformation chickInformation={this.chickInformation()} />;
+          case 3: return <TabInformation chickInformation={this.chickInformation()} />;
+          case 4:  return <TabInformation chickInformation={this.chickInformation()} />;
+          default:      return ;
+        }
+      })()}
             </div>
             <Footer />
           </>
