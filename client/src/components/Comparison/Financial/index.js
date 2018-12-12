@@ -41,11 +41,16 @@ const Financial = props => {
               <span className="tooltiptext">
                 Charities that spend more year over year on their programs and
                 services have a greater impact on their charitable missions.
-                This ratio indicates the charity's capacity to receive new donation and use it promptly.
+                This ratio indicates the charity's capacity to receive new
+                donation and use it promptly.
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
+          <div className="table-cell">
+            <h5>Balanced Budget:</h5>
+          </div>
+
           <div className="table-cell">
             <h5 className="tooltip">
               Donor dependency
@@ -61,7 +66,8 @@ const Financial = props => {
             <h5 className="tooltip">
               Working Captial Ratio
               <span className="tooltiptext">
-              Does thee charity have enough to survive a rainy day?              </span>
+                Does thee charity have enough to survive a rainy day?{' '}
+              </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
           </div>
@@ -75,7 +81,7 @@ const Financial = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push(`/charity/${  regno}`);
+                    history.push(`/charity/${regno}`);
                   }}
                 >
                   {name}
@@ -86,8 +92,17 @@ const Financial = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} alt="img" />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">
@@ -96,6 +111,7 @@ const Financial = props => {
               EMR,
               averageFundraising,
               Ecr,
+              executiveCompensation,
               Currr,
               donerDependency,
             } = charity;
@@ -170,10 +186,11 @@ const Financial = props => {
                     }}
                   />
                 </div>
+                  <div className="column-cell">{executiveCompensation} </div>
                 <div className="column-cell">
                   <CircularProgressbar
                     viewBox="0 0 164 180"
-                         percentage={donerDependency.replace('%', '')}
+                    percentage={donerDependency.replace('%', '')}
                     backgroundPadding={20}
                     text={`${donerDependency}`}
                     styles={{

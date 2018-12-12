@@ -6,9 +6,9 @@ class Works extends Component {
   render() {
     return (
       <React.Fragment>
-        <section className="about-us">
+        <section id="howitworks" className="about-us">
           <a name="Works" title="works" />
-          <h1 className="cardTitle">How it works</h1>
+          <h1 className="cardTitle">How It Works</h1>
           <div className="innerCards">
             <div className="inner">
               <div className="iconContainer">

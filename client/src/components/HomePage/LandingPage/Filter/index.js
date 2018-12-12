@@ -82,11 +82,11 @@ class Filter extends Component {
     const { income, category, valueSelectCategory, from, to } = this.state;
 
     if (income && category) {
-      url = `/search?incfrom=${from}&incto=${to}&category='${valueSelectCategory}`;
+      url = `/search?incfrom=${from}&incto=${to}&category=${valueSelectCategory}`;
     } else if (income) {
       url = `/search?incfrom=${from}&incto=${to}&category=-1`;
     } else if (category) {
-      url = `/search?incfrom=-1&incto=-1&category='${valueSelectCategory}'`;
+      url = `/search?incfrom=-1&incto=-1&category=${valueSelectCategory}`;
     } else {
       url = `/search?incfrom=-1&incto=-1&category=-1`;
     }

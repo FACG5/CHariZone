@@ -40,7 +40,7 @@ class Category extends Component {
     }
     const str = category.split(' ')[0];
     fetch(
-      `/api/v1/filter?incfrom=-1&incto=-1&exform=-1&exto=-1&category='${str}'`
+      `/api/v1/filter?incfrom=-1&incto=-1&exform=-1&exto=-1&category=${str}`
     )
       .then(response => response.json())
       .then(response => {
@@ -68,10 +68,7 @@ class Category extends Component {
           object.isActive = false;
           return object;
         });
-
-        const details = CategoryDetailsData.find(x => x.name.includes(str));
-        console.log('details', details);
-
+        const details = CategoryDetailsData.find(x => x.name === category);
         this.setState({
           details,
           data: array,

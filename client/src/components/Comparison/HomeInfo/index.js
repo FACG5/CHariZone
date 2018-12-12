@@ -3,6 +3,9 @@ import React from 'react';
 import './index.css';
 import { Link } from 'react-router-dom';
 
+const handherNumber = number =>
+  `${number}`.replace(/(?!^)(?=(?:([0-9]){3})+(?:\.|$))/gm, ',');
+
 const HomeInfo = props => {
   const { arrayOfCharity, history } = props;
   return (
@@ -34,7 +37,7 @@ const HomeInfo = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push('/charity/' + regno);
+                    history.push(`/charity/${regno}`);
                   }}
                 >
                   {name}
@@ -45,31 +48,47 @@ const HomeInfo = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">
           {arrayOfCharity.map(charity => {
-            const { latest_fye: latestFye, income, expend,Financial,Governance,Impact
-
- } = charity;
-            console.log(charity);
+            const {
+              latest_fye: latestFye,
+              income,
+              expend,
+              Financial,
+              Governance,
+              Impact,
+            } = charity;
             return (
               <div className="charity-column">
                 {
                   // <div className="column-cell">{latestFye}</div>
                 }
-                <div className="column-cell">{income}</div>
-                <div className="column-cell">{expend}</div>
+                <div className="column-cell">{handherNumber(income)} £</div>
+                <div className="column-cell">{handherNumber(expend)} £</div>
                 <div className="column-cell">
-                  {Financial}<span>/6</span>
+                  {Financial}
+                  <span>/6</span>
                 </div>
                 <div className="column-cell">
-                  {Governance}<span>/8</span>
+                  {Governance}
+                  <span>/8</span>
                 </div>
                 <div className="column-cell">
-                  {Impact}<span>/3</span>
+                  {Impact}
+                  <span>/3</span>
                 </div>
               </div>
             );

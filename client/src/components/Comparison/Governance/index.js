@@ -9,7 +9,6 @@ import {
   CircularLevel100,
 } from '../../CircularLevel';
 
-
 const returnFlag = flag => {
   if (flag === '1') {
     return <CircularLevel100 />;
@@ -49,9 +48,6 @@ const Governance = props => {
               </span>
             </h5>
             <img src="https://i.ibb.co/ZVPLVtB/information.png" alt="img" />
-          </div>
-          <div className="table-cell">
-            <h5>ECR</h5>
           </div>
           <div className="table-cell">
             <h5 className="tooltip">
@@ -125,7 +121,7 @@ const Governance = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push(`/charity/${  regno}`);
+                    history.push(`/charity/${regno}`);
                   }}
                 >
                   {name}
@@ -136,8 +132,17 @@ const Governance = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} alt="img" />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">
@@ -146,7 +151,6 @@ const Governance = props => {
               numberOfTrustees,
               trusteesBiography,
               tob,
-              executiveCompensation,
               policyGeneral,
               policyWhistleblowing,
               policyHealth,
@@ -162,7 +166,6 @@ const Governance = props => {
                   {returnFlag(trusteesBiography)}
                 </div>
                 <div className="column-cell">{returnFlag(tob)}</div>
-                <div className="column-cell">{executiveCompensation}</div>
                 <div className="column-cell">{returnFlag(policyGeneral)}</div>
                 <div className="column-cell">
                   {returnFlag(policyWhistleblowing)}
