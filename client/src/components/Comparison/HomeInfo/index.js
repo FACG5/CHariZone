@@ -34,7 +34,7 @@ const HomeInfo = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push('/charity/' + regno);
+                    history.push(`/charity/${  regno}`);
                   }}
                 >
                   {name}
@@ -45,15 +45,29 @@ const HomeInfo = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">
           {arrayOfCharity.map(charity => {
-            const { latest_fye: latestFye, income, expend,Financial,Governance,Impact
-
- } = charity;
+            const {
+              latest_fye: latestFye,
+              income,
+              expend,
+              Financial,
+              Governance,
+              Impact,
+            } = charity;
             console.log(charity);
             return (
               <div className="charity-column">
@@ -63,13 +77,16 @@ const HomeInfo = props => {
                 <div className="column-cell">{income}</div>
                 <div className="column-cell">{expend}</div>
                 <div className="column-cell">
-                  {Financial}<span>/6</span>
+                  {Financial}
+                  <span>/6</span>
                 </div>
                 <div className="column-cell">
-                  {Governance}<span>/8</span>
+                  {Governance}
+                  <span>/8</span>
                 </div>
                 <div className="column-cell">
-                  {Impact}<span>/3</span>
+                  {Impact}
+                  <span>/3</span>
                 </div>
               </div>
             );
