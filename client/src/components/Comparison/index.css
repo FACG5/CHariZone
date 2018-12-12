@@ -257,6 +257,7 @@
   width: 80px;
   height: 70px;
   border: 1px dashed #0067bb;
+  cursor: pointer;
 }
 
 .columns-div {
