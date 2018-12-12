@@ -9,7 +9,6 @@ import {
   CircularLevel100,
 } from '../../CircularLevel';
 
-
 const returnFlag = flag => {
   if (flag === '1') {
     return <CircularLevel100 />;
@@ -125,7 +124,7 @@ const Governance = props => {
               <div className="name-column">
                 <h3
                   onClick={() => {
-                    history.push(`/charity/${  regno}`);
+                    history.push(`/charity/${regno}`);
                   }}
                 >
                   {name}
@@ -136,8 +135,17 @@ const Governance = props => {
         </div>
         <div className="cLogo-div">
           {arrayOfCharity.map(charity => {
-            const { img } = charity;
-            return <img className="charity-logo" src={img[0].url} alt="img" />;
+            const { img, regno } = charity;
+            return (
+              <img
+                className="charity-logo"
+                src={img[0].url}
+                alt="img"
+                onClick={() => {
+                  history.push(`/charity/${regno}`);
+                }}
+              />
+            );
           })}
         </div>
         <div className="columns-div">

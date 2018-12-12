@@ -69,7 +69,7 @@ class Category extends Component {
           return object;
         });
 
-        const details = CategoryDetailsData.find(x => x.name.includes(str));
+        const details = CategoryDetailsData.find(x => x.name === str);
         this.setState({
           details,
           data: array,

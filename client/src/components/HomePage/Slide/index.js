@@ -9,7 +9,7 @@ class Slide extends React.Component {
     let images = imgLinks;
     images = [
       {
-        link: 'https://imgur.com/lAc1uvj.png',
+        link: 'https://imgur.com/9NgEgg6.png',
         title: 'General',
       },
       {
@@ -17,7 +17,7 @@ class Slide extends React.Component {
         title: 'Education',
       },
       {
-        link: 'https://imgur.com/5TiSSRy.png',
+        link: 'https://imgur.com/7RTGtOm.png',
         title: 'Medical Research',
       },
       {
@@ -54,14 +54,14 @@ class Slide extends React.Component {
       <div>
         <Link to={`category?category=${images[index].title}`}>
           <img
-            style={{ height: '70px', width: '70px' }}
+            style={{ height: '90px', width: '90px' }}
             alt={images[index]}
             key={img.id}
             src={images[index].link}
             onDragStart={this.handleOnDragStart}
             className="yours-custom-class"
           />
-          <h4 className="yours-custom-class">{images[index].title}</h4>
+          <h4>{images[index].title}</h4>
         </Link>
       </div>
     ));
