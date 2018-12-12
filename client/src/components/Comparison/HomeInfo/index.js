@@ -54,7 +54,6 @@ const HomeInfo = props => {
             const { latest_fye: latestFye, income, expend,Financial,Governance,Impact
 
  } = charity;
-            console.log(charity);
             return (
               <div className="charity-column">
                 {
