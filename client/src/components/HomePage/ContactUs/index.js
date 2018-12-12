@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './index.css';
 
 const ContactUS = () => (
@@ -24,7 +23,7 @@ const ContactUS = () => (
               <input
                 type="hidden"
                 name="_next"
-                value="https://charizone0.herokuapp.com/contact-thanks"
+                value="https://charizone2.herokuapp.com/contact-thanks"
               />
               <input
                 type="text"
