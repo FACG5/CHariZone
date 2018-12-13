@@ -240,7 +240,7 @@ const Kpis = (props) => {
         </div>
       </div>
     </BoxKpi>
-    <BoxKpi name="Impact" description="The governing board has the ultimate oversight authority for any charitable organization. In this section, ChariZone searches the charity's annual report and websites looking for evidence of an effective board  and  their willingness to disclose basic information to the public. We assess these indicators against the This Charity Governance  Code.">
+    <BoxKpi name="Impact" description="We are aware that measuring impact is very complicated but we expect all charities, regardless of their size, to regularly assess their effectiveness in achieving its charitable mission. ChariZone takes a deep dive into the charity's annual report and websites.">
       <div className="kpi--row">
         <div className="kpi--column">
           <div className="kpi--item">
