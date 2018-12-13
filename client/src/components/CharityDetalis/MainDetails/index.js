@@ -45,7 +45,7 @@ const MainDetails = props => {
               <span className="header">What</span>
             </td>
             <td className="header--items">
-              {what.map((x, i) => (
+              {how.map((x, i) => (
                 <span key={x + i}>{x}</span>
               ))}
             </td>
@@ -55,7 +55,7 @@ const MainDetails = props => {
               <span className="header">How</span>
             </td>
             <td className="header--items">
-              {how.map((x, i) => (
+              {what.map((x, i) => (
                 <span key={x + i}>{x}</span>
               ))}
             </td>
