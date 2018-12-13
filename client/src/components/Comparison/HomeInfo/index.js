@@ -76,8 +76,8 @@ const HomeInfo = props => {
                 {
                   // <div className="column-cell">{latestFye}</div>
                 }
-                <div className="column-cell">{handherNumber(income)} £</div>
-                <div className="column-cell">{handherNumber(expend)} £</div>
+                <div className="column-cell">£ {handherNumber(income)}</div>
+                <div className="column-cell">£ {handherNumber(expend)}</div>
                 <div className="column-cell">
                   {Financial}
                   <span>/6</span>
